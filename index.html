@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>真如苑佛教青年傳承夏令營</title>
+    <title>真如苑佛學夏令營</title>
     <meta
       name="description"
-      content="真如苑佛教青年傳承夏令營一頁式網站，介紹青年傳承訓練與歷年活動照片影片。"
+      content="以大般涅槃經、師徒傳承與慈悲實踐為主軸，為青年設計的佛學夏令營。"
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2381607f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='30' fill='white' font-family='Arial'%3E%E7%9C%9F%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23684f69'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='30' fill='white' font-family='Arial'%3E%E7%9C%9F%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,17 +19,78 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      /* 簡易輪播結構的 CSS 補充，可依現有 styles.css 整合 */
+      .hero-carousel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .carousel-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .carousel-item {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: heroFade 18s infinite ease-in-out;
+        transform: scale(1.04);
+      }
+      .carousel-item:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .carousel-item:nth-child(2) {
+        animation-delay: 6s;
+      }
+      .carousel-item:nth-child(3) {
+        animation-delay: 12s;
+      }
+      @keyframes heroFade {
+        0%, 28% {
+          opacity: 1;
+          transform: scale(1.04);
+        }
+        33%, 95% {
+          opacity: 0;
+          transform: scale(1.08);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1.04);
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="page-shell">
       <header class="topbar">
         <a class="brand" href="#hero">
-          <span class="brand-mark">真</span>
-          <span class="brand-text">真如苑佛教青年傳承夏令營</span>
+          <span class="brand-logo-group">
+            <img
+              class="brand-logo"
+              src="./images/recom-logo.png"
+              alt="Recom logo"
+            />
+            <img
+              class="brand-wordmark"
+              src="./images/shinnyo-en-logo-english-black-clean.png"
+              alt="Shinnyo English logo"
+            />
+          </span>
+          <span class="brand-text">真如苑佛學夏令營</span>
         </a>
         <nav class="nav">
-          <a href="#story">傳承主軸</a>
-          <a href="#visuals">活動影像</a>
+          <a href="#pillars">四大精神</a>
           <a href="#moments">歷年紀錄</a>
           <a href="#register">報名資訊</a>
         </nav>
@@ -37,16 +98,26 @@
 
       <main>
         <section id="hero" class="hero">
+          <!-- 上方大圖輪播結構 -->
+          <div class="hero-carousel">
+            <div class="carousel-inner">
+                    <img src="./images/hero-school-high-jp.jpg" alt="日本高中生在奈良戶外交流" class="carousel-item" />
+                    <img src="./images/hero-school-middle-jp.jpg" alt="日本國中生放學步行街道" class="carousel-item" />
+                    <img src="./images/hero-school-elementary-jp.jpg" alt="日本國小生背著書包上學" class="carousel-item" />
+            </div>
+          </div>
           <div class="hero-overlay"></div>
+          
           <div class="hero-copy">
-            <p class="eyebrow">真如苑佛教青年傳承訓練</p>
-            <h1>真如苑佛教青年傳承夏令營</h1>
+            <p class="eyebrow">真如苑佛教青年培育計畫</p>
+            <h1>真如苑<br />佛學<br />夏令營</h1>
             <p class="hero-description">
-              這個網站主要介紹真如苑佛教青年傳承夏令營，
-              內容聚焦青年傳承訓練、報名資訊，以及歷年活動照片與影片保存。
+              以《大般涅槃經》為根，以師徒傳承為橋，以慈悲供施為行。<br />
+              引導青年學子走入密教智慧，在三天的修行體驗中，
+              種下真如精神的種子。
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#moments">查看歷年紀錄</a>
+              <a class="button button-primary" href="#pillars">了解四大精神</a>
               <a
                 id="hero-brochure-link"
                 class="button button-secondary"
@@ -56,135 +127,104 @@
               >
             </div>
           </div>
-
-          <aside class="hero-panel">
-            <p class="panel-label">網站重點</p>
-            <div class="hero-stat-grid">
-              <article>
-                <span>網站主軸</span>
-                <strong>真如苑佛教青年傳承訓練</strong>
-              </article>
-              <article>
-                <span>內容重點</span>
-                <strong>報名資訊、歷年影像、青年傳承</strong>
-              </article>
-              <article>
-                <span>保存方向</span>
-                <strong>照片與影片紀錄長期整理</strong>
-              </article>
-            </div>
-          </aside>
         </section>
 
-        <section id="story" class="section">
+        <section id="pillars" class="section">
           <div class="section-heading">
-            <p class="eyebrow">傳承主軸</p>
-            <h2>以真如苑佛教青年傳承訓練為核心，建立清楚的介紹與歷年保存架構</h2>
+            <p class="eyebrow">傳承主軸・四大精神</p>
+            <h2>以四大精神為基，建立青年的信仰根基與人生方向</h2>
+            <p class="section-description">
+              真如苑的青年培育，不只是知識理解，更是透過真實體驗，
+              讓學子在活動中感受經典、認識傳承、實踐利他、鍛鍊心志。
+            </p>
           </div>
           <div class="story-grid">
             <article class="story-card">
-              <img src="./images/gallery-4.jpg" alt="青年交流活動畫面" />
+              <img src="./images/pillar-1-nirvana.jpg" alt="大般涅槃經經卷細節" />
               <div class="story-copy">
-                <span>01</span>
-                <h3>青年傳承</h3>
-                <p>以青年培育與傳承訓練為主軸，讓參與者建立方向、責任感與同行連結。</p>
+                <span class="pillar-num">01</span>
+                <span class="pillar-tag">涅槃根本</span>
+                <h3>大般涅槃經的智慧</h3>
+                <p>
+                  真如苑以《大般涅槃經》為修行根本，教導一切眾生皆有佛性、
+                  皆能成佛的平等智慧。課程場域的沉靜與專注，也象徵青年在學習中
+                  一步步走入經典、沉澱自心。
+                </p>
               </div>
             </article>
             <article class="story-card">
-              <img src="./images/gallery-5.jpg" alt="戶外活動與自然畫面" />
+              <img src="./images/pillar-2-law-stream.jpg" alt="真如三昧耶流主要傳承者法脈圖" />
               <div class="story-copy">
-                <span>02</span>
-                <h3>佛教研習</h3>
-                <p>把研習內容整理清楚，讓參與者在報名前就能理解活動定位與學習方向。</p>
+                <span class="pillar-num">02</span>
+                <span class="pillar-tag">師徒傳承</span>
+                <h3>法脈相承的修行精神</h3>
+                <p>
+                  密教修行重視法流傳承，從前輩承接智慧，再把責任與關懷傳遞給後輩。
+                  青年並肩同行的畫面，比單純風景更貼近這份一起走下去的傳承意象。
+                </p>
               </div>
             </article>
             <article class="story-card">
-              <img src="./images/gallery-6.jpg" alt="文化與城市空間畫面" />
+              <img src="./images/hero-bg.jpg" alt="青年陪伴與溫暖互動畫面" />
               <div class="story-copy">
-                <span>03</span>
-                <h3>歷年照片保存</h3>
-                <p>把歷屆活動照片持續累積，讓網站不只是當年度頁面，也是長期成果紀錄入口。</p>
+                <span class="pillar-num">03</span>
+                <span class="pillar-tag">慈悲供施</span>
+                <h3>利益眾生的實踐之道</h3>
+                <p>
+                  利他不是抽象口號，而是在陪伴、接納與互助之中實際展現。
+                  以人與人之間真實的笑容和連結，來對應慈悲供施的行動精神。
+                </p>
               </div>
             </article>
             <article class="story-card">
-              <img src="./images/gallery-2.jpg" alt="活動影像與紀錄" />
+              <img src="./images/gallery-5.jpg" alt="穿越山谷的道路象徵逆境中的修行" />
               <div class="story-copy">
-                <span>04</span>
-                <h3>影片回顧整理</h3>
-                <p>把歷年回顧影片與紀錄片段接進來，逐年整理成完整的青年傳承活動檔案。</p>
+                <span class="pillar-num">04</span>
+                <span class="pillar-tag">不動心志</span>
+                <h3>逆境中堅定的修行力</h3>
+                <p>
+                  修行之路不會永遠平順，但正因為有高低起伏，才更能看見內在的穩定。
+                  道路穿越山谷的畫面，較能傳達面對考驗仍然前行的不動心精神。
+                </p>
               </div>
             </article>
-          </div>
-        </section>
-
-        <section id="visuals" class="section section-tinted">
-          <div class="section-heading">
-            <p class="eyebrow">活動影像</p>
-            <h2>用活動照片承接真如苑佛教青年傳承訓練的現場感</h2>
-          </div>
-          <div class="visual-layout">
-            <div class="visual-mosaic">
-              <figure class="mosaic-tile tile-tall">
-                <img src="./images/hero-bg.jpg" alt="大型主視覺背景圖" />
-              </figure>
-              <figure class="mosaic-tile">
-                <img src="./images/gallery-1.jpg" alt="團體合照" />
-              </figure>
-              <figure class="mosaic-tile">
-                <img src="./images/gallery-2.jpg" alt="交流片段" />
-              </figure>
-              <figure class="mosaic-tile">
-                <img src="./images/gallery-4.jpg" alt="活動現場互動" />
-              </figure>
-              <figure class="mosaic-tile">
-                <img src="./images/gallery-5.jpg" alt="戶外自然景色" />
-              </figure>
-            </div>
-            <div class="visual-note">
-              <p class="eyebrow">影像呈現</p>
-              <h3>以影像為主，文字為輔</h3>
-              <p>
-                首頁與歷年回顧，都以大圖和活動照片承接節奏。
-                文字只保留真如苑佛教、青年傳承訓練與報名資訊相關內容。
-              </p>
-              <ul class="bullet-list">
-                <li>首屏先呈現研習現場與整體氛圍</li>
-                <li>中段以照片牆承接歷年活動影像</li>
-                <li>回顧區延伸到照片集與影片入口</li>
-              </ul>
-            </div>
           </div>
         </section>
 
         <section id="moments" class="section section-gallery">
           <div class="section-heading">
             <p class="eyebrow">歷年紀錄</p>
-            <h2>歷年活動照片與影片紀錄</h2>
+            <h2>每屆都是傳承鏈上的重要一環</h2>
           </div>
           <div class="moments-grid">
             <article class="moment-quote">
               <p>
-                「這個網站不只是本年度報名頁，也應該是歷年真如苑佛教青年傳承活動成果的入口。」
+                「這個夏令營讓我第一次感受到，修行不是大人的事，
+                也不是未來的事，而是現在、這個當下，我就能開始的事。」
               </p>
+              <footer class="quote-attr">歷屆學員分享</footer>
             </article>
             <figure class="moment-photo">
-              <img src="./images/gallery-3.jpg" alt="青年參與活動畫面" />
+              <img src="./images/moment-option-d.gif" alt="真如苑苑所石獅與建築細節" />
             </figure>
             <figure class="moment-photo">
-              <img src="./images/gallery-6.jpg" alt="城市與文化視覺畫面" />
+              <img src="./images/pillar-1-art.jpg" alt="真如苑相關藝術牌匾細節" />
             </figure>
             <article class="moment-quote">
               <p>
-                「歷年照片、影片、短片與合照紀錄，未來都可以逐年補進來，形成完整的傳承活動檔案。」
+                「歷年照片、影片、活動紀錄，是這條傳承路上每位青年留下的足跡，
+                也是後來者最好的引路燈。」
               </p>
+              <footer class="quote-attr">夏令營工作人員</footer>
             </article>
           </div>
           <div class="archive-actions">
-            <a id="photo-archive-link" class="button button-primary" target="_blank" rel="noreferrer"
+            <a
+              id="photo-archive-link"
+              class="button button-primary"
+              target="_blank"
+              rel="noreferrer"
               >查看歷年照片</a
-            >
-            <a id="video-archive-link" class="button button-secondary" target="_blank" rel="noreferrer"
-              >查看歷年影片</a
             >
           </div>
         </section>
@@ -192,9 +232,9 @@
         <section id="register" class="section section-register">
           <div class="section-heading">
             <p class="eyebrow">報名資訊</p>
-            <h2>索取三天課程資訊 / 預約名額</h2>
+            <h2>預約名額 / 索取三天課程簡章</h2>
             <p class="section-description">
-              表單只保留最需要的欄位，先取得聯絡方式，再由窗口提供活動與青年傳承訓練的詳細資訊。
+              留下您的資訊，由工作人員依需求提供最適合的課程說明與活動時間。
             </p>
           </div>
           <form id="register-form" class="register-form register-form-wide">
@@ -211,21 +251,75 @@
               <input name="email" type="email" placeholder="請輸入 Email" required />
             </label>
             <label>
-              學校 / 身分
-              <input name="school" type="text" placeholder="例如：高中生 / 大學生 / 家長" />
+              就讀學校
+              <input
+                name="school"
+                type="text"
+                placeholder="請輸入目前就讀的學校"
+              />
+            </label>
+            <label>
+              參加身分
+              <select name="level">
+                <option value="">請選擇</option>
+                <option value="student">學生</option>
+                <option value="parent">家長陪同</option>
+                <option value="other">其他</option>
+              </select>
+            </label>
+            <label>
+              對哪個主題最感興趣？
+              <select name="interest">
+                <option value="">請選擇感興趣的主題</option>
+                <option value="compassion">慈悲與感恩</option>
+                <option value="self-cultivation">自我修行與不動心</option>
+                <option value="esoteric">密教思想與傳承</option>
+                <option value="general">整體活動體驗</option>
+              </select>
             </label>
             <label class="field-span-2">
-              想了解的內容
-              <textarea name="note" rows="5" placeholder="可填寫想了解活動內容、時間或歷年活動資訊"></textarea>
+              想了解的內容或留言
+              <textarea
+                name="note"
+                rows="4"
+                placeholder="可填寫對課程的期待、想了解的密教精神面向，或其他問題"
+              ></textarea>
             </label>
             <input name="audience" type="hidden" value="shinnyo-en-buddhist-summer-camp" />
             <div class="field-span-2 form-actions">
-              <button type="submit" class="button button-primary">送出資料</button>
+              <button type="submit" class="button button-primary">送出報名資訊</button>
               <p id="form-message" class="form-message" aria-live="polite"></p>
             </div>
           </form>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <span class="brand-logo-group brand-logo-group-footer">
+              <img
+                class="brand-logo brand-logo-footer"
+                src="./images/recom-logo.png"
+                alt="Recom logo"
+              />
+              <img
+                class="brand-wordmark brand-wordmark-footer"
+                src="./images/shinnyo-en-logo-english-black-clean.png"
+                alt="Shinnyo English logo"
+              />
+            </span>
+            <div>
+              <strong>真如苑佛學夏令營</strong>
+            </div>
+          </div>
+          <div class="footer-links">
+            <a id="official-site-link" target="_blank" rel="noreferrer">真如苑官方網站</a>
+            <a id="facebook-link" target="_blank" rel="noreferrer">Facebook</a>
+            <span id="contact-phone"></span>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <script src="./site-config.js"></script>

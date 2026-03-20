@@ -1,0 +1,299 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "真 真如苑佛學夏令營" [ref=e4] [cursor=pointer]:
+      - /url: "#hero"
+      - generic [ref=e5]: 真
+      - generic [ref=e6]: 真如苑佛學夏令營
+    - navigation [ref=e7]:
+      - link "四大精神" [ref=e8] [cursor=pointer]:
+        - /url: "#pillars"
+      - link "學習路徑" [ref=e9] [cursor=pointer]:
+        - /url: "#levels"
+      - link "密教核心" [ref=e10] [cursor=pointer]:
+        - /url: "#teachings"
+      - link "活動影像" [ref=e11] [cursor=pointer]:
+        - /url: "#visuals"
+      - link "歷年紀錄" [ref=e12] [cursor=pointer]:
+        - /url: "#moments"
+      - link "報名資訊" [ref=e13] [cursor=pointer]:
+        - /url: "#register"
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e17]:
+        - heading "真如苑 佛學 夏令營" [level=1] [ref=e18]:
+          - text: 真如苑
+          - text: 佛學
+          - text: 夏令營
+        - paragraph [ref=e19]:
+          - text: 以《大般涅槃經》為根，以師徒傳承為橋，以慈悲供施為行。
+          - text: 引導國小、國中、高中學子走入密教智慧，在三天的修行體驗中，種下真如精神的種子。
+        - generic [ref=e20]:
+          - link "探索學習路徑" [ref=e21] [cursor=pointer]:
+            - /url: "#levels"
+          - link "索取研習簡章" [ref=e22] [cursor=pointer]:
+            - /url: https://example.com/brochure
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - paragraph [ref=e25]: 傳承主軸・四大精神
+          - heading "以四大精神為基，建立青年的信仰根基與人生方向" [level=2] [ref=e26]
+          - paragraph [ref=e27]: 真如苑密教精神植根於大般涅槃經，歷代師徒傳承，融入現代青年的生命教育， 讓學子在活動中體驗、思考、實踐。
+        - generic [ref=e28]:
+          - article [ref=e29]:
+            - img "青年交流活動畫面" [ref=e30]
+            - generic [ref=e31]:
+              - generic [ref=e32]: "01"
+              - generic [ref=e33]: 涅槃根本
+              - heading "大般涅槃經的智慧" [level=3] [ref=e34]
+              - paragraph [ref=e35]: 真如苑以《大般涅槃經》為修行根本，教導一切眾生皆有佛性、 皆能成佛的平等智慧。開祖以「一刀三禮」親雕涅槃尊像， 將敬畏與精進融入每一刀，也傳遞給後世修行者。
+          - article [ref=e36]:
+            - img "師徒傳承與修行" [ref=e37]
+            - generic [ref=e38]:
+              - generic [ref=e39]: "02"
+              - generic [ref=e40]: 師徒傳承
+              - heading "法脈相承的修行精神" [level=3] [ref=e41]
+              - paragraph [ref=e42]: 密教最重要的特色是師徒之間的法流傳承，源於大日如來的真言密教， 歷代相承，不曾中斷。夏令營讓青年體驗這種傳承關係—— 從前輩身上接受智慧，再向後輩傳遞責任。
+          - article [ref=e43]:
+            - img "慈悲供施服務學習" [ref=e44]
+            - generic [ref=e45]:
+              - generic [ref=e46]: "03"
+              - generic [ref=e47]: 慈悲供施
+              - heading "利益眾生的實踐之道" [level=3] [ref=e48]
+              - paragraph [ref=e49]: 真如苑教導「供施」——不只是物質的給予，而是以心待人、 以行動表達慈悲。青年在活動中透過服務學習、社區貢獻， 將信仰化為日常中真實的善行，體驗「為世為人」的喜悅。
+          - article [ref=e50]:
+            - img "不動心與品格培育" [ref=e51]
+            - generic [ref=e52]:
+              - generic [ref=e53]: "04"
+              - generic [ref=e54]: 不動心志
+              - heading "逆境中堅定的修行力" [level=3] [ref=e55]
+              - paragraph [ref=e56]: 不動明王象徵信仰的堅定：面對困難不動搖、在逆境中找到成長的功課。 修行之路從不平坦，但正是這些考驗，讓青年培養出面對人生的 真實力量與不畏難的品格。
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - paragraph [ref=e59]: 分齡學習路徑
+          - heading "從感恩到傳承，三個階段的密教智慧之旅" [level=2] [ref=e60]
+          - paragraph [ref=e61]: 根據不同學齡設計適合的學習內容，讓每位學子都能以自己的方式， 接觸真如苑的佛教精神與生命智慧。
+        - generic [ref=e62]:
+          - article [ref=e63]:
+            - generic [ref=e64]:
+              - generic [ref=e65]: 國小
+              - generic [ref=e66]: Elementary
+            - heading "慈悲種子・感恩生活" [level=3] [ref=e67]
+            - paragraph [ref=e68]: 主題：心中的小菩薩
+            - list [ref=e69]:
+              - listitem [ref=e70]:
+                - generic [ref=e71]: 🌱
+                - generic [ref=e72]:
+                  - strong [ref=e73]: 感恩與慈悲
+                  - paragraph [ref=e74]: 學習對身邊的人事物心存感謝，理解「每個人都有佛性」的平等精神
+              - listitem [ref=e75]:
+                - generic [ref=e76]: 🤝
+                - generic [ref=e77]:
+                  - strong [ref=e78]: 供施小行動
+                  - paragraph [ref=e79]: 透過簡單的服務活動，體驗幫助他人帶來的真實快樂與成就感
+              - listitem [ref=e80]:
+                - generic [ref=e81]: 🎨
+                - generic [ref=e82]:
+                  - strong [ref=e83]: 佛教藝術體驗
+                  - paragraph [ref=e84]: 以繪畫、手工創作接觸真如之美，感受佛教文化的溫暖與深度
+              - listitem [ref=e85]:
+                - generic [ref=e86]: 🌟
+                - generic [ref=e87]:
+                  - strong [ref=e88]: 生活品德實踐
+                  - paragraph [ref=e89]: 將佛教的誠實、善良、不傷害他人，連結到每天的校園與家庭生活
+            - link "國小學子報名" [ref=e91] [cursor=pointer]:
+              - /url: "#register"
+          - article [ref=e92]:
+            - generic [ref=e93]:
+              - generic [ref=e94]: 國中
+              - generic [ref=e95]: Junior High
+            - heading "自我修行・責任同行" [level=3] [ref=e96]
+            - paragraph [ref=e97]: 主題：修行就是面對自己
+            - list [ref=e98]:
+              - listitem [ref=e99]:
+                - generic [ref=e100]: 🧘
+                - generic [ref=e101]:
+                  - strong [ref=e102]: 修行哲學入門
+                  - paragraph [ref=e103]: 認識「修行不是逃避，而是面對」的真如精神，學習在困境中找到成長
+              - listitem [ref=e104]:
+                - generic [ref=e105]: ⛓️
+                - generic [ref=e106]:
+                  - strong [ref=e107]: 師徒傳承體驗
+                  - paragraph [ref=e108]: 透過資深青年帶領，親身感受傳承關係——接受智慧、擔起責任
+              - listitem [ref=e109]:
+                - generic [ref=e110]: 💪
+                - generic [ref=e111]:
+                  - strong [ref=e112]: 不動心培育
+                  - paragraph [ref=e113]: 學習不動明王精神：面對壓力、同儕挑戰與人際困境時的內在穩定力
+              - listitem [ref=e114]:
+                - generic [ref=e115]: 🫂
+                - generic [ref=e116]:
+                  - strong [ref=e117]: 同行共修連結
+                  - paragraph [ref=e118]: 與來自各地的同齡青年共同修行，建立跨越地域的信仰同伴關係
+            - link "國中學子報名" [ref=e120] [cursor=pointer]:
+              - /url: "#register"
+          - article [ref=e121]:
+            - generic [ref=e122]:
+              - generic [ref=e123]: 高中
+              - generic [ref=e124]: Senior High
+            - heading "密教思想・傳承使命" [level=3] [ref=e125]
+            - paragraph [ref=e126]: 主題：成為傳承的一環
+            - list [ref=e127]:
+              - listitem [ref=e128]:
+                - generic [ref=e129]: 📿
+                - generic [ref=e130]:
+                  - strong [ref=e131]: 密教思想深探
+                  - paragraph [ref=e132]: 深入了解真言密教的法流：大日如來、涅槃尊像、開祖教義與現代意涵
+              - listitem [ref=e133]:
+                - generic [ref=e134]: 📖
+                - generic [ref=e135]:
+                  - strong [ref=e136]: 大般涅槃經導讀
+                  - paragraph [ref=e137]: 接觸真如苑根本經典，理解「一切眾生皆有佛性」對當代青年的生命啟示
+              - listitem [ref=e138]:
+                - generic [ref=e139]: 🌏
+                - generic [ref=e140]:
+                  - strong [ref=e141]: 社會實踐與菩薩道
+                  - paragraph [ref=e142]: 將密教精神延伸到社會責任，思考如何在升學與人生選擇中實踐利他精神
+              - listitem [ref=e143]:
+                - generic [ref=e144]: 🔥
+                - generic [ref=e145]:
+                  - strong [ref=e146]: 青年傳承領導力
+                  - paragraph [ref=e147]: 準備成為傳承鏈的下一環，帶領弟弟妹妹、承接長輩智慧，成為真如精神的傳遞者
+            - link "高中學子報名" [ref=e149] [cursor=pointer]:
+              - /url: "#register"
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - paragraph [ref=e152]: 密教精神核心
+          - heading "走入真如苑，理解密教精神的三大支柱" [level=2] [ref=e153]
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - article [ref=e156]:
+              - generic [ref=e157]: 法
+              - heading "法流傳承" [level=3] [ref=e158]
+              - paragraph [ref=e159]: 真如苑密教的法脈源於大日如來，歷代師徒相承，從不間斷。 「法流」不只是知識的傳遞，更是心與心之間的連接—— 師父的修行智慧透過親身引導，進入弟子的生命。 青年夏令營正是這條法流的延伸，讓年輕世代也成為傳承的一部分。
+            - article [ref=e160]:
+              - generic [ref=e161]: 悲
+              - heading "大悲利他" [level=3] [ref=e162]
+              - paragraph [ref=e163]: 「為世為人」是真如苑最核心的行動哲學。密教的修行不是隱居獨善， 而是走入社會、以大悲心服務眾生。 從定期捐血到社區志工，從關懷長者到陪伴兒童， 每一個善行都是修行的延伸，也是菩薩道精神的具體實踐。
+            - article [ref=e164]:
+              - generic [ref=e165]: 真
+              - heading "真如本質" [level=3] [ref=e166]
+              - paragraph [ref=e167]: 「真如」是佛教哲學中指宇宙最根本、不變的實相。 真如苑的修行目標是讓每位弟子回歸自己的真如本性—— 不被外在環境動搖，不被煩惱遮蔽，在日常生活中保持 清明、慈悲、正念的心，活出佛性的光輝。
+          - generic [ref=e168]:
+            - blockquote [ref=e169]:
+              - paragraph [ref=e170]:
+                - text: 「修行之路絕不平坦，
+                - text: 但每一個困難
+                - text: 都是自己修行的功課。」
+              - generic [ref=e171]: 真如苑 開祖 伊藤真乘
+            - generic [ref=e172]:
+              - generic [ref=e173]: 涅槃尊像
+              - generic [ref=e174]: 一刀三禮
+              - generic [ref=e175]: 不動明王
+              - generic [ref=e176]: 師徒相承
+              - generic [ref=e177]: 供施精神
+              - generic [ref=e178]: 真言密教
+              - generic [ref=e179]: 菩薩道
+              - generic [ref=e180]: 大般涅槃經
+      - generic [ref=e181]:
+        - generic [ref=e182]:
+          - paragraph [ref=e183]: 活動影像
+          - heading "用影像承接真如苑佛教青年傳承訓練的現場溫度" [level=2] [ref=e184]
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - figure [ref=e187]:
+              - img "大型主視覺背景圖" [ref=e188]
+            - figure [ref=e189]:
+              - img "團體合照" [ref=e190]
+            - figure [ref=e191]:
+              - img "交流片段" [ref=e192]
+            - figure [ref=e193]:
+              - img "活動現場互動" [ref=e194]
+            - figure [ref=e195]:
+              - img "戶外自然景色" [ref=e196]
+          - generic [ref=e197]:
+            - paragraph [ref=e198]: 三天體驗節奏
+            - heading "感受・思考・實踐" [level=3] [ref=e199]
+            - paragraph [ref=e200]: 每一屆夏令營以三天完整體驗為節奏： 第一天「感受」——打開心，接觸密教文化； 第二天「思考」——深入討論，連結自己的生命； 第三天「實踐」——服務行動，把慈悲帶出去。
+            - list [ref=e201]:
+              - listitem [ref=e202]: 密教文化體驗：佛像藝術、誦經入門、供施實作
+              - listitem [ref=e203]: 師長引導：資深信眾親身分享修行故事
+              - listitem [ref=e204]: 同齡共修：與來自全台的青年共同成長
+              - listitem [ref=e205]: 生命思考：個人反思與小組深度對話
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - paragraph [ref=e208]: 歷年紀錄
+          - heading "每一屆都是傳承鏈上的重要一環" [level=2] [ref=e209]
+        - generic [ref=e210]:
+          - article [ref=e211]:
+            - paragraph [ref=e212]: 「這個夏令營讓我第一次感受到，修行不是大人的事， 也不是未來的事——而是現在、這個當下，我就能開始的事。」
+            - generic [ref=e213]: —— 歷屆學員分享
+          - figure [ref=e214]:
+            - img "青年參與活動畫面" [ref=e215]
+          - figure [ref=e216]:
+            - img "城市與文化視覺畫面" [ref=e217]
+          - article [ref=e218]:
+            - paragraph [ref=e219]: 「歷年照片、影片、活動紀錄，是這條傳承路上每位青年留下的足跡， 也是後來者最好的引路燈。」
+            - generic [ref=e220]: —— 夏令營工作人員
+        - generic [ref=e221]:
+          - link "查看歷年照片" [ref=e222] [cursor=pointer]:
+            - /url: https://example.com/photos
+          - link "查看歷年影片" [ref=e223] [cursor=pointer]:
+            - /url: https://example.com/videos
+      - generic [ref=e224]:
+        - generic [ref=e225]:
+          - paragraph [ref=e226]: 報名資訊
+          - heading "預約名額 / 索取三天課程簡章" [level=2] [ref=e227]
+          - paragraph [ref=e228]: 留下您的資訊，由工作人員依您的學齡提供最適合的課程說明與活動時間。
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - text: 學生姓名
+            - textbox "學生姓名" [ref=e231]:
+              - /placeholder: 請輸入姓名
+          - generic [ref=e232]:
+            - text: 聯絡電話
+            - textbox "聯絡電話" [ref=e233]:
+              - /placeholder: 請輸入電話
+          - generic [ref=e234]:
+            - text: Email
+            - textbox "Email" [ref=e235]:
+              - /placeholder: 請輸入 Email
+          - generic [ref=e236]:
+            - text: 就讀學校
+            - textbox "就讀學校" [ref=e237]:
+              - /placeholder: 例如：○○國小 / ○○國中 / ○○高中
+          - generic [ref=e238]:
+            - text: 學齡層次
+            - combobox "學齡層次" [ref=e239] [cursor=pointer]:
+              - option "請選擇學齡" [selected]
+              - option "國小（小學生）"
+              - option "國中（國中生）"
+              - option "高中（高中生）"
+              - option "家長陪同"
+              - option "其他"
+          - generic [ref=e240]:
+            - text: 對哪個主題最感興趣？
+            - combobox "對哪個主題最感興趣？" [ref=e241] [cursor=pointer]:
+              - option "請選擇感興趣的主題" [selected]
+              - option "慈悲與感恩（國小主題）"
+              - option "自我修行與不動心（國中主題）"
+              - option "密教思想與傳承（高中主題）"
+              - option "整體活動體驗"
+          - generic [ref=e242]:
+            - text: 想了解的內容或留言
+            - textbox "想了解的內容或留言" [ref=e243]:
+              - /placeholder: 可填寫對課程的期待、想了解的密教精神面向，或其他問題
+          - generic [ref=e244]:
+            - button "送出報名資訊" [ref=e245] [cursor=pointer]
+            - paragraph
+  - contentinfo [ref=e246]:
+    - generic [ref=e247]:
+      - generic [ref=e248]:
+        - generic [ref=e249]: 真
+        - generic [ref=e250]:
+          - strong [ref=e251]: 真如苑佛教青年傳承夏令營
+          - paragraph [ref=e252]: 真如一如，萬佛歸一，為世為人
+      - generic [ref=e253]:
+        - link "真如苑官方網站" [ref=e254] [cursor=pointer]:
+          - /url: https://www.shinnyo-en.org.tw/
+        - link "Facebook" [ref=e255] [cursor=pointer]:
+          - /url: https://www.facebook.com/
+        - generic [ref=e256]: (02) 8509-7070

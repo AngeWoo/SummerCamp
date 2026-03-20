@@ -1,12 +1,29 @@
-const config = window.SITE_CONFIG || {};
+﻿﻿const config = window.SITE_CONFIG || {};
 
 const refs = {
   heroBrochureLink: document.querySelector("#hero-brochure-link"),
   photoArchiveLink: document.querySelector("#photo-archive-link"),
   videoArchiveLink: document.querySelector("#video-archive-link"),
+  officialSiteLink: document.querySelector("#official-site-link"),
+  facebookLink: document.querySelector("#facebook-link"),
+  contactPhone: document.querySelector("#contact-phone"),
   form: document.querySelector("#register-form"),
   formMessage: document.querySelector("#form-message")
 };
+
+function resetScrollOnHomeEntry() {
+  if (window.location.hash) {
+    return;
+  }
+
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  });
+}
 
 function applySiteConfig() {
   if (refs.heroBrochureLink) {
@@ -20,11 +37,23 @@ function applySiteConfig() {
   if (refs.videoArchiveLink) {
     refs.videoArchiveLink.href = config.videoArchiveUrl || "#";
   }
+
+  if (refs.officialSiteLink) {
+    refs.officialSiteLink.href = config.officialSiteUrl || "#";
+  }
+
+  if (refs.facebookLink) {
+    refs.facebookLink.href = config.facebookUrl || "#";
+  }
+
+  if (refs.contactPhone) {
+    refs.contactPhone.textContent = config.contactPhone || "";
+  }
 }
 
 async function submitToGas(payload) {
   if (!config.gasWebAppUrl) {
-    throw new Error("尚未設定 GAS Web App URL，請先編輯 site-config.js。");
+    throw new Error("尚未設定 GAS Web App URL，請先更新 site-config.js。");
   }
 
   await fetch(config.gasWebAppUrl, {
@@ -59,4 +88,5 @@ if (refs.form) {
   });
 }
 
+window.addEventListener("pageshow", resetScrollOnHomeEntry);
 applySiteConfig();

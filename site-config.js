@@ -1,4 +1,4 @@
-window.SITE_CONFIG = {
+﻿﻿window.SITE_CONFIG = {
   gasWebAppUrl: "",
   brochureUrl: "https://example.com/brochure",
   googleFormUrl: "https://forms.gle/example",

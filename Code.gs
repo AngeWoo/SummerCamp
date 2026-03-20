@@ -1,4 +1,4 @@
-const SHEET_NAME = "registrations";
+﻿﻿const SHEET_NAME = "registrations";
 
 function doPost(e) {
   try {
