@@ -15,7 +15,45 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
   <style>
-    /* 簡易輪播結構的 CSS 補充，可依現有 styles.css 整合 */
+    /* 頁尾吉祥物樣式與動畫 */
+    .footer-mascots {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      flex-grow: 1; /* 佔據中央空間 */
+      padding-left: 150px; /* 整體明顯往右移動 */
+    }
+
+    .footer-mascot-item {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+
+    /* 第 1、3 隻：跳起來 */
+    .footer-mascot-item:nth-child(odd) {
+      animation: footerMascotJump 2.5s infinite ease-in-out;
+    }
+
+    /* 第 2、4 隻：蹲下去 */
+    .footer-mascot-item:nth-child(even) {
+      animation: footerMascotSquat 2.5s infinite ease-in-out;
+      animation-delay: 1.25s; /* 讓它們輪流動作 */
+    }
+
+    @keyframes footerMascotJump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes footerMascotSquat {
+      0%, 100% { transform: scaleY(1) translateY(0); }
+      50% { transform: scaleY(0.7) translateY(10px); transform-origin: bottom; }
+    }
+
+    /* 原有 hero 樣式 ... */
     .hero-carousel {
       position: absolute;
       top: 0;
@@ -370,9 +408,17 @@
           <img src="./images/logo06.png" alt="logo06" style="height: 42px; width: auto; object-fit: contain;" width="88" height="42" loading="lazy" />
           <div style="display: flex; align-items: center;">
             <img class="brand-event-logo brand-event-logo-footer" src="./images/logo02-transparent.png" alt="佛學夏令營"
-              style="height: 28px; width: auto; object-fit: contain;" />
+              style="height: 28px; width: auto; object-fit: contain;" width="105" height="28" />
           </div>
         </div>
+
+        <div class="footer-mascots">
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+        </div>
+
         <div class="footer-links">
           <a id="official-site-link" target="_blank" rel="noreferrer">真如苑官方網站</a>
           <a id="facebook-link" target="_blank" rel="noreferrer">Facebook</a>
