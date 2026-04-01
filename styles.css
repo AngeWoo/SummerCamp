@@ -98,24 +98,22 @@ select {
   isolation: isolate;
   width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
-  padding-bottom: 0;
 }
 
 .page-shell::before {
   content: "";
   position: absolute;
-  inset: 220px -48px 140px;
+  inset: 120px -24px 100px;
   pointer-events: none;
   z-index: -1;
   border-radius: 56px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 248, 240, 0.08)),
+  background: 
     repeating-linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.08) 0 12px,
-      rgba(255, 255, 255, 0) 12px 26px
+      rgba(255, 255, 255, 0.04) 0 16px,
+      rgba(255, 255, 255, 0) 16px 48px
     );
-  opacity: 0.78;
+  opacity: 0.8;
 }
 
 .hero > .topbar {
@@ -300,23 +298,23 @@ select {
 .hero-copy {
   position: relative;
   z-index: 2;
-  width: min(900px, calc(100% - 64px));
+  width: min(1000px, calc(100% - 64px)); /* 放寬文字區塊 */
   max-width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 120px;
   gap: 0;
-  margin-bottom: 120px; /* 為下方的跳躍區留出空間 */
+  margin-bottom: 140px;
 }
 
 .mascot-stage {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   right: 0;
-  height: 220px; /* 增加高度以容納放大的吉祥物 */
+  height: 280px; 
   pointer-events: none;
   overflow: visible;
   z-index: 2;
@@ -326,13 +324,12 @@ select {
 }
 
 .mascot-actor {
-  width: 120px; /* 放大吉祥物 */
+  width: 160px; /* 再次放大吉祥物 */
   height: auto;
   opacity: 0;
   transform: translateX(0);
-  /* 使用 mix-blend-mode 去除白底 */
   mix-blend-mode: multiply;
-  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.18));
+  filter: drop-shadow(0 15px 40px rgba(0,0,0,0.22));
 }
 
 .jump-to-left {
@@ -413,26 +410,27 @@ h3 {
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 5.2vw, 5.6rem);
+  font-size: clamp(3.2rem, 6.5vw, 6.8rem); /* 顯著加大標題 */
   font-weight: 900;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-shadow:
-    0 2px 4px rgba(0,0,0,0.6),
-    0 8px 40px rgba(0,0,0,0.5);
-  max-width: 22ch;
-  line-height: 1.2;
-  margin-bottom: 28px;
+    0 4px 12px rgba(0,0,0,0.5),
+    0 12px 48px rgba(0,0,0,0.4);
+  max-width: 18ch;
+  line-height: 1.15;
+  margin-bottom: 32px;
 }
 
 .hero-description {
-  max-width: 600px;
+  max-width: 800px; /* 加寬導言區域 */
   margin: 0;
-  font-size: 0.97rem;
-  line-height: 1.85;
-  color: rgba(255, 250, 246, 0.82);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding-top: 22px;
+  font-size: 1.18rem; /* 字體加大 */
+  line-height: 2.0;
+  font-weight: 500;
+  color: rgba(255, 250, 246, 0.9);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 32px;
 }
 
 .hero-description p {
@@ -548,14 +546,15 @@ h3 {
 .section:not(.section-teachings):not(.section-tinted):not(.section-gallery):not(.section-register)::before {
   content: "";
   position: absolute;
-  inset: 18px -20px;
+  inset: 0;
   z-index: -1;
-  border-radius: 38px;
-  border: 1px solid rgba(92, 69, 93, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255, 253, 249, 0.72), rgba(247, 239, 230, 0.42)),
-    radial-gradient(circle at top right, rgba(123, 100, 124, 0.1), transparent 34%);
-  box-shadow: 0 18px 44px rgba(86, 63, 69, 0.05);
+  border-radius: 40px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 252, 247, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 12px 40px rgba(89, 67, 53, 0.06),
+    0 2px 4px rgba(89, 67, 53, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .section-heading {
@@ -1001,39 +1000,17 @@ h3 {
   font-weight: 700;
 }
 
-.bullet-list {
-  margin: 14px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-  line-height: 2.0;
-}
-
-/* ─── GALLERY / MOMENTS ─── */
 .section-gallery {
-  padding: 88px 40px 106px;
-  border-radius: 36px;
+  padding: 48px 40px 88px; /* 縮減頂部 Padding 至 48px，保持底部與水平 Padding */
+  margin-bottom: 24px;
+  border-radius: 40px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 252, 247, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 24px 60px rgba(89, 67, 53, 0.08),
+    0 8px 24px rgba(89, 67, 53, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 16% 24%, rgba(255, 250, 241, 0.92), transparent 30%),
-    radial-gradient(circle at 88% 14%, rgba(123, 100, 124, 0.12), transparent 24%),
-    linear-gradient(180deg, rgba(252, 247, 240, 0.88), rgba(244, 236, 229, 0.68));
-  border: 1px solid rgba(92, 69, 93, 0.08);
-  box-shadow: 0 18px 44px rgba(86, 63, 69, 0.07);
-}
-
-.section-gallery::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 36%),
-    repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.06) 0 16px,
-      rgba(255, 255, 255, 0) 16px 34px
-    );
-  opacity: 0.5;
 }
 
 .moments-grid {
@@ -1041,6 +1018,7 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
   margin-bottom: 28px;
+  align-items: start; /* 防止不均勻拉伸 */
 }
 
 .moment-photo {
@@ -1052,12 +1030,116 @@ h3 {
 }
 
 .moment-quote {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 14px;
-  background:
-    linear-gradient(180deg, rgba(255, 250, 244, 0.97), rgba(244, 235, 245, 0.92));
+  gap: 12px;
+  padding: 32px;
+  border-radius: 28px;
+  aspect-ratio: 16 / 9; /* 與影片比例完全一致 */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(244, 235, 245, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 12px 32px rgba(89, 67, 53, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  overflow: hidden;
+}
+
+.video-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 鎖定比例 */
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #000;
+}
+
+.video-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover; /* 嘗試填滿 */
+}
+
+.quote-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--accent);
+  color: white;
+  padding: 4px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-bottom-right-radius: 14px;
+}
+
+.moment-quote p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.quote-attr {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.moments-marquee-wrap {
+  grid-column: 1 / -1; /* 橫跨整個網格 */
+  width: 100%;
+  overflow: hidden;
+  margin-top: 24px;
+  border-radius: 28px;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 24px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.moments-marquee {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee 20s linear infinite; /* 加快速度至 20s */
+  will-change: transform; /* 硬體加速，確保流暢度 */
+}
+
+.moments-marquee:hover {
+  animation-play-state: paused;
+}
+
+.moments-marquee img {
+  height: 260px;
+  width: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, filter 0.3s ease; /* 移除了 scale，避免布局跳動 */
+  filter: grayscale(0.2) brightness(0.95);
+}
+
+.moments-marquee img:hover {
+  filter: grayscale(0) brightness(1.05);
+  z-index: 10;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* 精確的對半位移，確保速度一致 */
+}
+
+@media (max-width: 768px) {
+  .moments-marquee img {
+    height: 180px;
+  }
 }
 
 .moment-quote p {
@@ -1073,28 +1155,17 @@ h3 {
   letter-spacing: 0.06em;
 }
 
-/* ─── REGISTER ─── */
 .section-register {
-  padding: 56px 40px 64px;
+  padding: 88px 40px;
+  margin-bottom: 24px; /* 從 56px 緊縮 */
   border-radius: 40px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 253, 249, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow: 
+    0 32px 80px rgba(89, 67, 53, 0.1),
+    0 12px 32px rgba(89, 67, 53, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
   overflow: hidden;
-  background:
-    radial-gradient(circle at top left, rgba(255, 251, 245, 0.94), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(123, 100, 124, 0.1), transparent 26%),
-    linear-gradient(180deg, rgba(255, 250, 244, 0.97), rgba(245, 239, 232, 0.99));
-  margin-top: 24px;
-  border: 1px solid rgba(92, 69, 93, 0.08);
-  box-shadow: 0 22px 52px rgba(86, 63, 69, 0.08);
-}
-
-.section-register::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.16), transparent 38%),
-    radial-gradient(circle at 80% 100%, rgba(197, 162, 107, 0.12), transparent 24%);
 }
 
 .register-form {
@@ -1155,18 +1226,23 @@ h3 {
 
 /* ─── FOOTER ─── */
 .site-footer {
-  padding: 44px 0 36px;
-  border-top: 1px solid var(--line);
-  margin-top: 48px;
-  background:
-    linear-gradient(180deg, rgba(255, 252, 247, 0), rgba(255, 250, 244, 0.38));
+  padding: 24px 40px; /* 大幅精簡內距，比照 Topbar 風格 */
+  margin-top: 24px;   /* 壓縮過大的視覺鴻溝 */
+  margin-bottom: 40px; /* 底部稍微留一些緩衝 */
+  border-radius: 40px;
+  background: linear-gradient(162deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 252, 248, 0.94) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 20px 48px rgba(89, 67, 53, 0.05),
+    0 4px 12px rgba(89, 67, 53, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 20px; /* 內部元件更緊湊 */
   flex-wrap: wrap;
 }
 
@@ -1184,23 +1260,27 @@ h3 {
 
 .footer-brand p {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 1.15rem; /* 字體加大 */
   color: var(--text);
-  font-family: "Cormorant Garamond", serif;
-  letter-spacing: 0.06em;
+  font-family: "Noto Sans TC", sans-serif;
+  letter-spacing: 0.08em; /* 比照 Banner 字間距 */
+  font-weight: 500;
 }
 
 .footer-links {
   display: flex;
   align-items: center;
-  gap: 20px;
-  color: var(--text);
-  font-size: 0.88rem;
+  gap: 32px; /* 增加間隔 */
+  color: var(--accent-deep);
+  font-size: 1.12rem; /* 字體加大 */
+  font-weight: 700;
+  letter-spacing: 0.08em; /* 比照 Banner */
 }
 
 .footer-links a:hover {
   color: var(--accent-deep);
 }
+
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1060px) {
@@ -1492,6 +1572,14 @@ h3 {
   font-size: 0.88rem;
   color: var(--muted);
   letter-spacing: 0.06em;
+}
+
+.section {
+  margin-bottom: 24px; /* 從 64px 緊縮 */
+}
+
+.section:not(:first-child) {
+  /* 使用 Margin 產生間隙 */
 }
 
 @media (max-width: 980px) {
