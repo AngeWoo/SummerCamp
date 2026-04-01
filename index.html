@@ -392,5 +392,23 @@
       setTimeout(triggerJump, 1000);
     </script>
     <script src="./app.js"></script>
+    <!-- 選單切換腳本 -->
+    <script>
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        mainNav.classList.toggle('mobile-active');
+      });
+
+      // 點擊連結後自動收合
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          mainNav.classList.remove('mobile-active');
+        });
+      });
+    </script>
   </body>
 </html>

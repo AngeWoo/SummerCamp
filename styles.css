@@ -1001,7 +1001,7 @@ h3 {
 }
 
 .section-gallery {
-  padding: 48px 40px 88px; /* 縮減頂部 Padding 至 48px，保持底部與水平 Padding */
+  padding: 48px 40px 36px; /* 縮減頂部 Padding 至 48px，底部 Padding 壓縮至 36px */
   margin-bottom: 24px;
   border-radius: 40px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 252, 247, 0.9) 100%);
@@ -1136,9 +1136,116 @@ h3 {
   100% { transform: translateX(-50%); } /* 精確的對半位移，確保速度一致 */
 }
 
+/* ===== 行動版專屬樣式 (768px 以下) ===== */
 @media (max-width: 768px) {
-  .moments-marquee img {
-    height: 180px;
+  /* 漢堡選單隱藏機制 */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--text-dark);
+    transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .mobile-menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .mobile-menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .main-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 252, 247, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding-top: 80px;
+    z-index: 1000;
+  }
+
+  .main-nav.mobile-active {
+    display: flex;
+  }
+
+  .main-nav a {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* 報名區行動端優化 */
+  .section-register {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .register-mascot-wrap img {
+    height: 80px !important;
+  }
+
+  .section-register .section-heading h2 {
+    font-size: 2.1rem !important;
+  }
+
+  .section-register .section-heading p {
+    white-space: normal !important; /* 讓文字在手機端正確換行 */
+    font-size: 1rem !important;
+    max-width: 100% !important;
+    text-align: center;
+  }
+
+  .section-register .moments-grid {
+    grid-template-columns: 1fr !important; /* 手機端恢復單欄 */
+    gap: 20px;
+  }
+
+  .section-register .moments-grid article, 
+  .section-register .moments-grid div {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 報名卡片行動版置中 */
+  #register > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    padding: 0 10px;
+  }
+
+  /* 手機版 Footer 優化 (同步 Banner 質感) */
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 16px;
+    font-size: 1.15rem !important; /* 同步 Banner 字級 */
+    letter-spacing: 0.08em !important; /* 同步 Banner 字距 */
+    font-weight: 500;
   }
 }
 
