@@ -22,7 +22,10 @@
       gap: 12px;
       justify-content: center;
       flex-grow: 1; /* 佔據中央空間 */
-      padding-left: 150px; /* 整體明顯往右移動 */
+    }
+
+    @media (min-width: 981px) {
+      .footer-mascots { padding-left: 150px; } /* 只在電腦版往右移 */
     }
 
     .footer-mascot-item {
@@ -450,47 +453,62 @@
     const mascot = document.getElementById('jumping-mascot');
     let isLeft = false;
 
-    function playPopSound() {
+    // 模擬可愛的音效 (Web Audio API)
+    function playEffect(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         const oscillator = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
 
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.2);
-
-        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+        if (type === 'jump') {
+          // Q彈的跳躍聲 (Boing!)
+          oscillator.type = 'triangle';
+          oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.1);
+          oscillator.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.3);
+          gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        } else {
+          // 輕微的滾動聲 (Whoosh)
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.5);
+          gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+        }
 
         oscillator.connect(gainNode);
         gainNode.connect(audioCtx.destination);
-
         oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.2);
+        oscillator.stop(audioCtx.currentTime + 0.8);
       } catch (e) {
-        console.log('Audio wait for interaction');
+        console.log('音效需使用者互動後才能播放');
       }
     }
 
     function triggerJump() {
       mascot.classList.remove('jump-to-left', 'jump-to-right');
-      void mascot.offsetWidth; // 觸發重繪
+      void mascot.offsetWidth; // 重新啟動動畫
 
       if (isLeft) {
+        // 往右滾動 (會包含最右邊的跳躍)
         mascot.classList.add('jump-to-right');
         isLeft = false;
+        playEffect('slide');
+        // 在動畫執行到 2.1 秒時 (對應右邊跳躍點) 播放跳躍音效
+        setTimeout(() => playEffect('jump'), 2100);
       } else {
+        // 往左滾動
         mascot.classList.add('jump-to-left');
         isLeft = true;
+        playEffect('slide');
       }
-      playPopSound();
     }
 
-    // 每 4 秒跳一次
+    // 每 4 秒執行一次動作週期
     setInterval(triggerJump, 4000);
-    // 初始跳一次
-    setTimeout(triggerJump, 1000);
+    // 初次載入延遲一下執行
+    setTimeout(triggerJump, 1500);
   </script>
   <script src="./app.js"></script>
   <!-- 選單切換腳本 -->
