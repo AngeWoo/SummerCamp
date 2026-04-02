@@ -147,17 +147,6 @@
         <a href="#register" style="display: flex; align-items: center; gap: 4px;"><img src="./images/logo06.png"
             style="height: 24px; width: auto;" alt="Logo" width="24" height="24" />報名資訊</a>
       </nav>
-      <button class="mobile-menu-toggle" type="button" aria-label="&#x958B;&#x555F;&#x9078;&#x55AE;"
-        aria-expanded="false" aria-controls="mobile-main-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="mobile-main-nav" class="main-nav" aria-label="&#x624B;&#x6A5F;&#x7248;&#x9078;&#x55AE;">
-        <a href="#origin">雿?蝺?絲</a>
-        <a href="#moments">甇瑕僑蝝?</a>
-        <a href="#register">?勗?鞈?</a>
-      </nav>
     </header>
     <!-- 上方大圖輪播結構 -->
     <div class="hero-carousel">
@@ -182,7 +171,9 @@
 
     <!-- 跳躍吉祥物區域 -->
     <div class="mascot-stage">
-      <img src="./images/logo06.png" id="jumping-mascot" class="mascot-actor" alt="吉祥物跳躍" width="180" height="180">
+      <div class="mascot-vehicle" id="jumping-mascot-vehicle">
+        <img src="./images/logo06.png" id="jumping-mascot" class="mascot-actor" alt="吉祥物跳躍" width="180" height="180">
+      </div>
     </div>
   </section>
 
@@ -443,11 +434,40 @@
   </div>
 
   <script src="./site-config.js"></script>
-  <script src="./app.js"></script>
   <script>
     // 吉祥物跳躍與音效邏輯
     const mascot = document.getElementById('jumping-mascot');
-    let isLeft = false;
+    const mascotVehicle = document.getElementById('jumping-mascot-vehicle');
+    const mascotStage = document.querySelector('.mascot-stage');
+    const topbar = document.querySelector('.hero > .topbar');
+    const mascotMotion = {
+      direction: 1,
+      range: 0,
+      pixelsPerTurn: 56,
+      bobHeight: 8,
+      jumpHeight: 278,
+      travelDuration: 7200,
+      rightJumpDuration: 1600,
+      leftPauseDuration: 700,
+      rightPauseDuration: 900,
+      rafId: null,
+      timeoutId: null
+    };
+
+    function syncMascotRange() {
+      if (!mascot || !mascotStage) return;
+
+      const topbarWidth = topbar?.getBoundingClientRect().width || mascotStage.getBoundingClientRect().width;
+      const mascotWidth = mascot.getBoundingClientRect().width || (window.innerWidth <= 768 ? 75 : 160);
+      const maxRange = Math.max(Math.round((topbarWidth - mascotWidth) / 2), 0);
+      const styles = getComputedStyle(mascotStage);
+
+      mascotMotion.range = maxRange;
+      mascotMotion.bobHeight = Math.abs(parseFloat(styles.getPropertyValue('--mascot-bob-height'))) || 10;
+      mascotMotion.jumpHeight = Math.abs(parseFloat(styles.getPropertyValue('--mascot-jump-right'))) || 278;
+      mascotMotion.pixelsPerTurn = window.innerWidth <= 768 ? 68 : 120;
+      mascotStage.style.setProperty('--mascot-range-px', `${maxRange}px`);
+    }
 
     // 模擬可愛的音效 (Web Audio API)
     function playEffect(type) {
@@ -456,7 +476,14 @@
         const oscillator = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
 
-        if (type === 'jump') {
+        if (type === 'edge-jump') {
+          oscillator.type = 'triangle';
+          oscillator.frequency.setValueAtTime(240, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(1080, audioCtx.currentTime + 0.14);
+          oscillator.frequency.exponentialRampToValueAtTime(520, audioCtx.currentTime + 0.34);
+          gainNode.gain.setValueAtTime(0.22, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.015, audioCtx.currentTime + 0.4);
+        } else if (type === 'jump') {
           // Q彈的跳躍聲 (Boing!)
           oscillator.type = 'triangle';
           oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
@@ -482,48 +509,112 @@
       }
     }
 
-    function triggerJump() {
-      mascot.classList.remove('jump-to-left', 'jump-to-right');
-      void mascot.offsetWidth; // 重新啟動動畫
-
-      if (isLeft) {
-        // 往右滾動 (會包含最右邊的跳躍)
-        mascot.classList.add('jump-to-right');
-        isLeft = false;
-        playEffect('slide');
-        // 在動畫執行到 2.1 秒時 (對應右邊跳躍點) 播放跳躍音效
-        setTimeout(() => playEffect('jump'), 2100);
-      } else {
-        // 往左滾動
-        mascot.classList.add('jump-to-left');
-        isLeft = true;
-        playEffect('slide');
-      }
+    function easeInOutSine(t) {
+      return -(Math.cos(Math.PI * t) - 1) / 2;
     }
 
-    // 每 4 秒執行一次動作週期
-    setInterval(triggerJump, 4000);
-    // 初次載入延遲一下執行
-    setTimeout(triggerJump, 1500);
-  </script>
-  <script src="./app.js"></script>
-  <!-- 選單切換腳本 -->
-  <script>
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
 
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      mainNav.classList.toggle('mobile-active');
-    });
+    function applyMascotTransform(x, y, rotationDeg, scale = 1) {
+      mascotVehicle.style.opacity = '1';
+      mascotVehicle.style.transform = `translateX(${x}px) translateY(${y}px) scale(${scale})`;
+      mascot.style.transform = `rotate(${rotationDeg}deg)`;
+    }
 
-    // 點擊連結後自動收合
-    document.querySelectorAll('.main-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        mainNav.classList.remove('mobile-active');
-      });
-    });
+    function animateRoll(direction) {
+      const startX = direction === 1 ? -mascotMotion.range : mascotMotion.range;
+      const endX = -startX;
+      const totalDistance = Math.abs(endX - startX);
+      const turns = totalDistance / mascotMotion.pixelsPerTurn;
+      const finalRotation = turns * 360 * direction;
+      let startTime = null;
+
+      clearTimeout(mascotMotion.timeoutId);
+
+      const frame = (timestamp) => {
+        if (startTime === null) {
+          startTime = timestamp;
+          playEffect('slide');
+        }
+
+        const progress = Math.min((timestamp - startTime) / mascotMotion.travelDuration, 1);
+        const eased = easeInOutSine(progress);
+        const x = startX + (endX - startX) * eased;
+        const distanceMoved = Math.abs(x - startX);
+        const rotation = (distanceMoved / mascotMotion.pixelsPerTurn) * 360 * direction;
+        const bob = -Math.abs(Math.sin((distanceMoved / mascotMotion.pixelsPerTurn) * Math.PI)) * mascotMotion.bobHeight;
+
+        applyMascotTransform(x, bob, rotation, 1);
+
+        if (progress < 1) {
+          mascotMotion.rafId = requestAnimationFrame(frame);
+          return;
+        }
+
+        applyMascotTransform(endX, 0, finalRotation, 1);
+
+        if (direction === 1) {
+          mascotMotion.timeoutId = setTimeout(() => animateEdgeJump(endX, finalRotation, -1), 120);
+        } else {
+          mascotMotion.timeoutId = setTimeout(() => animateEdgeJump(endX, finalRotation, 1), 120);
+        }
+      };
+
+      mascotMotion.rafId = requestAnimationFrame(frame);
+    }
+
+    function animateEdgeJump(x, baseRotation, nextDirection) {
+      let startTime = null;
+      let jumpSoundPlayed = false;
+
+      const frame = (timestamp) => {
+        if (startTime === null) {
+          startTime = timestamp;
+        }
+
+        if (!jumpSoundPlayed) {
+          playEffect('edge-jump');
+          jumpSoundPlayed = true;
+        }
+
+        const progress = Math.min((timestamp - startTime) / mascotMotion.rightJumpDuration, 1);
+        const launch = easeOutCubic(progress);
+        const arc = Math.sin(progress * Math.PI);
+        const y = -mascotMotion.jumpHeight * arc;
+        const rotation = baseRotation + launch * 140;
+        const scale = 1 + arc * 0.14;
+
+        applyMascotTransform(x, y, rotation, scale);
+
+        if (progress < 1) {
+          mascotMotion.rafId = requestAnimationFrame(frame);
+          return;
+        }
+
+        applyMascotTransform(x, 0, baseRotation + 140, 1);
+        mascotMotion.direction = nextDirection;
+        const pause = nextDirection === -1 ? mascotMotion.rightPauseDuration : mascotMotion.leftPauseDuration;
+        mascotMotion.timeoutId = setTimeout(() => animateRoll(mascotMotion.direction), pause);
+      };
+
+      mascotMotion.rafId = requestAnimationFrame(frame);
+    }
+
+    function restartMascotAnimation() {
+      if (!mascot || !mascotStage) return;
+      cancelAnimationFrame(mascotMotion.rafId);
+      clearTimeout(mascotMotion.timeoutId);
+      syncMascotRange();
+      mascotMotion.direction = 1;
+      applyMascotTransform(-mascotMotion.range, 0, 0, 1);
+      mascotMotion.timeoutId = setTimeout(() => animateRoll(mascotMotion.direction), 500);
+    }
+
+    syncMascotRange();
+    window.addEventListener('resize', restartMascotAnimation);
+    restartMascotAnimation();
   </script>
 </body>
 
