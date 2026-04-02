@@ -1697,13 +1697,13 @@ h3 {
 .values-mascot-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
 }
 
 .values-mascot {
   width: auto;
-  height: 160px;
-  max-width: 320px;
+  height: 104px;
+  max-width: 240px;
   object-fit: contain;
 }
 
@@ -1757,7 +1757,7 @@ h3 {
 
 /* ─── VALUES SECTION ─── */
 .section-values {
-  padding: 24px 40px;
+  padding: 10px 40px 24px;
 }
 
 .values-grid {
@@ -2651,5 +2651,66 @@ h3 {
   .register-info-deadline {
     margin: 0 auto !important;
     display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-regions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    max-width: 460px;
+    margin: 24px auto 0;
+  }
+
+  .register-card {
+    max-width: none !important;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+      0 14px 34px rgba(89, 67, 53, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  }
+
+  .register-card > div:last-child {
+    padding: 18px 18px 20px !important;
+  }
+
+  .register-card h3 {
+    font-size: 1.6rem !important;
+    margin-bottom: 14px !important;
+    letter-spacing: 0.08em;
+  }
+
+  .register-card > div:last-child > div:last-child {
+    gap: 10px !important;
+  }
+
+  .register-card .button {
+    min-width: 0;
+    min-height: 56px;
+    padding: 0 18px !important;
+    border-radius: 18px !important;
+    font-size: 1.08rem !important;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    line-height: 1;
+    box-shadow:
+      0 10px 22px rgba(89, 67, 53, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .register-card .button.button-secondary {
+    border-color: rgba(130, 108, 126, 0.22);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 244, 239, 0.96) 100%);
+  }
+
+  .register-card .button.button-primary {
+    background: linear-gradient(135deg, #fff2d4 0%, #f6d487 54%, #ecbb5d 100%);
+  }
+
+  .register-card .button.button-tertiary {
+    border-color: rgba(172, 181, 117, 0.34);
+    background: linear-gradient(180deg, rgba(248, 251, 235, 0.98) 0%, rgba(234, 241, 199, 0.96) 100%);
   }
 }
