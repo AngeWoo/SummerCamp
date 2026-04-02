@@ -1490,6 +1490,10 @@ h3 {
   transition: transform 0.5s ease;
 }
 
+.origin-card-image {
+  object-position: center 28%;
+}
+
 .value-card:hover .value-card-photo img {
   transform: scale(1.05);
 }
