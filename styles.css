@@ -556,7 +556,7 @@ h3 {
 .section {
   position: relative;
   isolation: isolate;
-  padding: 88px 0;
+  padding: 24px 40px;
 }
 
 .section:not(.section-teachings):not(.section-tinted):not(.section-gallery):not(.section-register)::before {
@@ -1017,7 +1017,7 @@ h3 {
 }
 
 .section-gallery {
-  padding: 48px 40px 36px; /* 縮減頂部 Padding 至 48px，底部 Padding 壓縮至 36px */
+  padding: 24px 40px; /* 統一上下為 24px */
   margin-bottom: 24px;
   border-radius: 40px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 252, 247, 0.9) 100%);
@@ -1331,7 +1331,7 @@ h3 {
 }
 
 .section-register {
-  padding: 40px 40px 60px;
+  padding: 24px 40px;
   margin-bottom: 24px;
   border-radius: 40px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 253, 249, 0.92) 100%);
@@ -1349,8 +1349,8 @@ h3 {
 }
 
 .register-info-card {
-  margin: 0 auto 32px;
-  padding: 24px 30px;
+  margin: 0 auto 24px;
+  padding: 16px 30px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.84);
   background:
@@ -1696,8 +1696,7 @@ h3 {
 
 /* ─── VALUES SECTION ─── */
 .section-values {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding: 24px 40px;
 }
 
 .values-grid {
@@ -2244,7 +2243,7 @@ h3 {
   }
 
   .section {
-    padding: 52px 0;
+    padding: 24px 16px;
   }
 
   .section-heading h2 {
@@ -2572,5 +2571,24 @@ h3 {
     font-size: 22px;
     top: 10px;
     right: 10px;
+  }
+}
+@media (max-width: 1024px) {
+  /* 手機與 iPad 瀏覽時取消「最新公告」標籤 */
+  .register-info-badge {
+    display: none !important;
+  }
+  
+  /* 讓報名時間區塊置中 */
+  .register-info-banner {
+    justify-content: center !important;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .register-info-deadline {
+    margin: 0 auto !important;
+    display: inline-block;
   }
 }
