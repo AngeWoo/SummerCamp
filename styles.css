@@ -1156,8 +1156,9 @@ h3 {
 @media (max-width: 768px) {
   /* 報名區行動端優化 */
   .section-register {
-    padding: 40px 20px;
+    padding: 12px 16px 20px;
     text-align: center;
+    border-radius: 28px;
   }
 
   .register-mascot-wrap img {
@@ -1169,7 +1170,7 @@ h3 {
   }
 
   #register {
-    padding: 40px 20px !important;
+    padding: 12px 16px 20px !important;
   }
 
   #register > .section-heading {
@@ -1201,14 +1202,14 @@ h3 {
   }
 
   .section-register .section-heading p {
-    white-space: normal !important; /* 讓文字在手機端正確換行 */
+    white-space: normal !important;
     font-size: 1rem !important;
     max-width: 100% !important;
     text-align: center;
   }
 
   .section-register .moments-grid {
-    grid-template-columns: 1fr !important; /* 手機端恢復單欄 */
+    grid-template-columns: 1fr !important;
     gap: 20px;
   }
 
@@ -1217,39 +1218,84 @@ h3 {
     grid-template-columns: 1fr !important;
   }
 
+  /* 報名資訊卡片 */
   .register-info-card {
-    padding: 22px 18px;
-    margin-bottom: 32px;
+    padding: 20px 16px;
+    margin-bottom: 28px;
+    border-radius: 22px;
   }
 
   .register-info-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .register-info-badge,
+  .register-info-deadline {
+    font-size: 0.78rem;
+    padding: 0 12px;
+    min-height: 30px;
   }
 
   .register-info-mascot {
-    width: 132px;
-    margin: 4px auto 12px;
+    width: 100px;
+    margin: 8px auto 8px;
   }
 
   .register-info-block h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+  }
+
+  .register-info-divider {
+    margin-top: 16px;
   }
 
   .register-info-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 12px;
+    margin-top: 16px;
   }
 
-  /* 報名卡片行動版置中 */
-  #register > div[style*="grid-template-columns"] {
+  .register-info-panel {
+    padding: 18px 16px 18px 20px;
+    border-radius: 18px;
+  }
+
+  .register-info-label {
+    font-size: 0.88rem;
+    margin-bottom: 8px !important;
+  }
+
+  .register-info-list {
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .register-info-note {
+    font-size: 0.85rem;
+  }
+
+  .register-info-grid {
     grid-template-columns: 1fr !important;
-    gap: 24px !important;
-    padding: 0 !important;
+    gap: 16px !important;
   }
 
-  /* 手機版 Footer 優化 (同步 Banner 質感) */
+  .register-regions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .register-card {
+    width: 100% !important;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* 手機版 Footer 優化 */
   .footer-inner {
     flex-direction: column;
     align-items: center;
@@ -1265,8 +1311,8 @@ h3 {
   .footer-links {
     flex-direction: column;
     gap: 16px;
-    font-size: 1.15rem !important; /* 同步 Banner 字級 */
-    letter-spacing: 0.08em !important; /* 同步 Banner 字距 */
+    font-size: 1.15rem !important;
+    letter-spacing: 0.08em !important;
     font-weight: 500;
   }
 }
@@ -1285,8 +1331,8 @@ h3 {
 }
 
 .section-register {
-  padding: 88px 40px;
-  margin-bottom: 24px; /* 從 56px 緊縮 */
+  padding: 40px 40px 60px;
+  margin-bottom: 24px;
   border-radius: 40px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 253, 249, 0.92) 100%);
   border: 1px solid rgba(255, 255, 255, 0.82);
@@ -1303,8 +1349,8 @@ h3 {
 }
 
 .register-info-card {
-  margin: 0 auto 44px;
-  padding: 30px;
+  margin: 0 auto 32px;
+  padding: 24px 30px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.84);
   background:
@@ -1389,6 +1435,14 @@ h3 {
   background: linear-gradient(90deg, transparent 0%, rgba(170, 138, 102, 0.32) 18%, rgba(170, 138, 102, 0.32) 82%, transparent 100%);
 }
 
+.register-regions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 32px auto 0;
+}
+
 .register-info-panel {
   min-height: 100%;
   padding: 22px 20px;
@@ -1402,21 +1456,21 @@ h3 {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: 5px;
+  width: 8px;
   border-radius: 24px 0 0 24px;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .register-info-panel-date::before {
-  background: linear-gradient(180deg, #d59873 0%, #efc8b2 100%);
+  background: linear-gradient(180deg, #ef7d5d 0%, #f9c0af 100%);
 }
 
 .register-info-panel-qualify::before {
-  background: linear-gradient(180deg, #d9b46f 0%, #e8d3a2 100%);
+  background: linear-gradient(180deg, #f6c444 0%, #fbe9b1 100%);
 }
 
 .register-info-panel-fee::before {
-  background: linear-gradient(180deg, #95a164 0%, #d6ddb0 100%);
+  background: linear-gradient(180deg, #88b04b 0%, #c4db96 100%);
 }
 
 .register-info-panel p,
@@ -1653,6 +1707,21 @@ h3 {
   margin-top: 8px;
 }
 
+@media (max-width: 640px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .value-card-photo {
+    height: 200px;
+  }
+
+  .value-body {
+    padding: 20px 18px 24px;
+  }
+}
+
 .value-card {
   display: flex;
   flex-direction: column;
@@ -1856,9 +1925,7 @@ h3 {
   margin-bottom: 24px; /* 從 64px 緊縮 */
 }
 
-.section:not(:first-child) {
-  /* 使用 Margin 產生間隙 */
-}
+/* .section:not(:first-child) uses margin-bottom from .section */
 
 @media (max-width: 980px) {
   .topbar,
@@ -1868,7 +1935,6 @@ h3 {
   .moments-grid,
   .register-form-wide,
   .teachings-layout,
-  .values-grid,
   .origin-inner {
     grid-template-columns: 1fr;
   }
@@ -2154,7 +2220,7 @@ h3 {
 
 @media (max-width: 640px) {
   .page-shell {
-    width: min(100% - 20px, 1200px);
+    width: min(100% - 16px, 1200px);
   }
 
   .brand-text {
@@ -2172,10 +2238,13 @@ h3 {
 
   .button {
     width: 100%;
+    min-width: unset;
+    padding: 15px 20px;
+    font-size: 1rem;
   }
 
   .section {
-    padding: 64px 0;
+    padding: 52px 0;
   }
 
   .section-heading h2 {
@@ -2187,21 +2256,121 @@ h3 {
 
   /* 使卡片標題及其 Logo 在手機上一列顯示 */
   .value-body h3 {
-    font-size: 1.15rem !important;
-    gap: 8px !important;
-    white-space: nowrap;
+    font-size: 1.1rem !important;
+    gap: 6px !important;
+    flex-wrap: wrap;
   }
 
   .value-body h3 img {
-    height: 24px !important;
+    height: 22px !important;
   }
 
   .hero-copy h1 {
-    font-size: 2.2rem !important;
+    font-size: 2.0rem !important;
     line-height: 1.25;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: keep-all;
   }
 
+  .register-info-grid {
+    gap: 12px !important;
+  }
+
+  /* ── 報名區 640px 細化 ── */
+  .section-register {
+    padding: 8px 12px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .register-info-card {
+    padding: 16px 14px !important;
+    margin-bottom: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .register-info-block h3 {
+    font-size: 1.55rem !important;
+  }
+
+  .register-info-panel {
+    padding: 14px 14px 14px 18px !important;
+    border-radius: 14px !important;
+  }
+
+  .register-info-panel::before {
+    width: 6px;
+  }
+
+  .register-info-grid {
+    gap: 10px !important;
+    margin-top: 12px !important;
+  }
+
+  /* 北中南三區卡片 按鈕在 640px 特別強化 */
+  .register-card {
+    border-radius: 18px !important;
+    max-width: 100% !important;
+  }
+
+  .register-card > div:last-child {
+    padding: 20px 16px !important;
+  }
+
+  .register-card h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* 使按鈕間距適合手指點擊 */
+  .register-card .button {
+    padding: 16px 20px;
+    font-size: 1.05rem;
+    border-radius: 14px;
+  }
+
+  /* ── sections 的畫廊 ── */
+  .section-gallery {
+    padding: 32px 14px 24px !important;
+    border-radius: 24px !important;
+  }
+
+  .moments-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .video-card {
+    border-radius: 18px !important;
+  }
+
+  .moment-quote {
+    aspect-ratio: auto !important;
+    padding: 24px 20px !important;
+    border-radius: 18px !important;
+    min-height: 180px;
+  }
+
+  .moment-quote p {
+    font-size: 0.98rem !important;
+    line-height: 1.7;
+  }
+
+  .moments-marquee img {
+    height: 180px !important;
+  }
+
+  .moments-marquee {
+    gap: 14px !important;
+  }
+
+  /* ── hero 描述文字 ── */
+  .hero-description {
+    font-size: 0.97rem !important;
+    line-height: 1.85;
+    padding-top: 20px;
+  }
+
+  /* ── footer ── */
   .site-footer {
     padding: 10px 14px;
     border-radius: 999px;
@@ -2245,5 +2414,53 @@ h3 {
     gap: 6px 10px;
     font-size: 0.78rem !important;
     letter-spacing: 0.04em !important;
+  }
+
+  /* ── 浮動按鈕 ── */
+  .floating-controls {
+    bottom: 16px;
+    right: 8px;
+    gap: 6px;
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
+}
+
+/* ─── 超窄螢幕 420px 以下 ─── */
+@media (max-width: 420px) {
+  .hero-copy h1 {
+    font-size: 1.75rem !important;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-description {
+    font-size: 0.9rem !important;
+  }
+
+  .register-info-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .register-info-block h3 {
+    font-size: 1.4rem !important;
+  }
+
+  .section-heading h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .value-body h3 {
+    font-size: 1.0rem !important;
+  }
+
+  .footer-mascots {
+    display: none; /* 超窄螢幕隱藏頁尾吉祥物，避免擠壓 */
+  }
+
+  .register-card .button {
+    font-size: 0.95rem;
+    padding: 14px 16px;
   }
 }
