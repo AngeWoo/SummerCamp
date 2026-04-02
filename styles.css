@@ -121,7 +121,9 @@ select {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(1200px, calc(100% - 40px));
+  width: min(1200px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  box-sizing: border-box;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.72);
   padding: 10px 32px;
@@ -1601,6 +1603,65 @@ h3 {
   letter-spacing: 0.08em; /* 比照 Banner */
 }
 
+.footer-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social-link {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 241, 235, 0.96) 100%);
+  border: 1px solid rgba(129, 96, 127, 0.14);
+  text-decoration: none;
+  box-shadow:
+    0 10px 22px rgba(89, 67, 53, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease, border-color 150ms ease;
+}
+
+.footer-social-link svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.footer-social-link:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 28px rgba(89, 67, 53, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+  filter: saturate(1.05);
+  border-color: rgba(129, 96, 127, 0.22);
+}
+
+.footer-links .footer-social-link:hover,
+.footer-links .footer-social-link:focus-visible {
+  color: inherit;
+}
+
+.footer-social-link:focus-visible {
+  outline: 3px solid rgba(129, 96, 127, 0.25);
+  outline-offset: 3px;
+}
+
+.footer-social-link.is-facebook {
+  color: #1877f2;
+}
+
+.footer-social-link.is-line {
+  color: #06c755;
+}
+
+.footer-contact {
+  white-space: nowrap;
+}
+
 .footer-links a:hover {
   color: var(--accent-deep);
 }
@@ -1620,9 +1681,9 @@ h3 {
 /* ─── BRAND EVENT LOGO ─── */
 .brand-event-logo {
   display: block;
-  height: 44px !important;
+  height: 60px !important;
   width: auto;
-  max-width: 220px;
+  max-width: 300px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -2176,8 +2237,8 @@ h3 {
   .brand-logo { width: 24px; height: 24px; }
 
   .brand .brand-event-logo {
-    height: 30px !important;
-    max-width: 150px;
+    height: 40px !important;
+    max-width: 210px;
   }
   
   .nav {
