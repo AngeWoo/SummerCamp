@@ -381,7 +381,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
                 <a href="https://forms.gle/WmTx62JrUkfhSMXP6" target="_blank" class="button button-primary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
-                <a href="javascript:void(0);" onclick="window.open('./images/佛夏北區課程表.jpg', '北區課程表', 'width=800,height=1000,scrollbars=yes')" class="button button-tertiary"
+                <a href="javascript:void(0);" onclick="openCenteredWindow('./images/佛夏北區課程表.jpg', '北區課程表', 800, 1000)" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
               </div>
             </div>
@@ -399,7 +399,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
                 <a href="https://forms.gle/KLtSv7pz6TopgNJy9" target="_blank" class="button button-primary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
-                <a href="javascript:void(0);" onclick="window.open('./images/佛夏中區課程表.jpg', '中區課程表', 'width=800,height=1000,scrollbars=yes')" class="button button-tertiary"
+                <a href="javascript:void(0);" onclick="openCenteredWindow('./images/佛夏中區課程表.jpg', '中區課程表', 800, 1000)" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
               </div>
             </div>
@@ -417,7 +417,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
                 <a href="https://forms.gle/un4iM9c3z95gCch98" target="_blank" class="button button-primary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
-                <a href="javascript:void(0);" onclick="window.open('./images/佛夏南區課程表.jpg', '南區課程表', 'width=800,height=1000,scrollbars=yes')" class="button button-tertiary"
+                <a href="javascript:void(0);" onclick="openCenteredWindow('./images/佛夏南區課程表.jpg', '南區課程表', 800, 1000)" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
               </div>
             </div>
@@ -677,6 +677,17 @@
       window.addEventListener('resize', () => {
         if (window.innerWidth > 980) closeMobileMenu();
       });
+    }
+    function openCenteredWindow(url, title, w, h) {
+      var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+      var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+      var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+      var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+      var systemZoom = width / window.screen.availWidth;
+      var left = (width - w) / 2 / systemZoom + dualScreenLeft;
+      var top = (height - h) / 2 / systemZoom + dualScreenTop;
+      var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w / systemZoom + ', height=' + h / systemZoom + ', top=' + top + ', left=' + left);
+      if (window.focus) newWindow.focus();
     }
   </script>
 </body>
