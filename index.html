@@ -14,6 +14,27 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <script>
+    /* 核心課程表控制邏輯 - 強制顯示版 */
+    window.showCourseSchedule = function(imageUrl, title) {
+      console.log('Open Schedule:', imageUrl);
+      var modal = document.getElementById('courseModal');
+      var img = document.getElementById('modalImg');
+      if (modal && img) {
+        img.src = imageUrl;
+        img.alt = title;
+        modal.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+    window.closeCourseModal = function() {
+      var modal = document.getElementById('courseModal');
+      if (modal) {
+        modal.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    };
+  </script>
   <style>
     /* 頁尾吉祥物樣式與動畫 */
     .footer-mascots {
@@ -381,7 +402,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
                 <a href="https://forms.gle/WmTx62JrUkfhSMXP6" target="_blank" class="button button-primary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
-                <a href="javascript:void(0);" onclick="openCenteredWindow('./images/佛夏北區課程表.jpg', '北區課程表', 800, 1000)" class="button button-tertiary"
+                <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏北區課程表.jpg', '北區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
               </div>
             </div>
@@ -399,7 +420,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
                 <a href="https://forms.gle/KLtSv7pz6TopgNJy9" target="_blank" class="button button-primary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
-                <a href="javascript:void(0);" onclick="openCenteredWindow('./images/佛夏中區課程表.jpg', '中區課程表', 800, 1000)" class="button button-tertiary"
+                <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏中區課程表.jpg', '中區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
               </div>
             </div>
@@ -417,7 +438,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
                 <a href="https://forms.gle/un4iM9c3z95gCch98" target="_blank" class="button button-primary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
-                <a href="javascript:void(0);" onclick="openCenteredWindow('./images/佛夏南區課程表.jpg', '南區課程表', 800, 1000)" class="button button-tertiary"
+                <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏南區課程表.jpg', '南區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
               </div>
             </div>
@@ -471,6 +492,17 @@
   </div>
 
   <script src="./site-config.js"></script>
+  <script>
+    window.openCourseModal = function(u, t) {
+      var m = document.getElementById('courseModal');
+      var i = document.getElementById('modalImg');
+      if (m && i) { i.src = u; m.classList.add('is-active'); document.body.style.overflow = 'hidden'; }
+    };
+    window.closeCourseModal = function() {
+      var m = document.getElementById('courseModal');
+      if (m) { m.classList.remove('is-active'); document.body.style.overflow = ''; }
+    };
+  </script>
   <script>
     // 吉祥物跳躍與音效邏輯
     const mascot = document.getElementById('jumping-mascot');
@@ -678,18 +710,21 @@
         if (window.innerWidth > 980) closeMobileMenu();
       });
     }
-    function openCenteredWindow(url, title, w, h) {
-      var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
-      var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
-      var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-      var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
-      var systemZoom = width / window.screen.availWidth;
-      var left = (width - w) / 2 / systemZoom + dualScreenLeft;
-      var top = (height - h) / 2 / systemZoom + dualScreenTop;
-      var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w / systemZoom + ', height=' + h / systemZoom + ', top=' + top + ', left=' + left);
-      if (window.focus) newWindow.focus();
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.querySelector('.course-modal-overlay');
+      if (overlay) overlay.addEventListener('click', window.closeCourseModal);
+    });
   </script>
+  <!-- 可愛風課程表模態框 -->
+  <div id="courseModal" class="course-modal">
+    <div class="course-modal-overlay"></div>
+    <div class="course-modal-content">
+      <button class="course-modal-close" onclick="window.closeCourseModal()" aria-label="關閉視窗">&times;</button>
+      <div class="course-modal-body">
+        <img id="modalImg" src="" alt="課程表" loading="lazy" />
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
