@@ -1285,8 +1285,8 @@ h3 {
   }
 
   .register-regions-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
   }
 
   .register-card {
@@ -2307,9 +2307,8 @@ h3 {
   }
 
   /* 北中南三區卡片 按鈕在 640px 特別強化 */
-  .register-card {
-    border-radius: 18px !important;
-    max-width: 100% !important;
+  .register-regions-grid {
+    gap: 8px !important;
   }
 
   .register-card > div:last-child {
