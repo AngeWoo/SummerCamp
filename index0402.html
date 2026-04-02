@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>真如苑佛學夏令營</title>
+  <meta name="description" content="以大般涅槃經、師徒傳承與慈悲實踐為主軸，為青年設計的佛學夏令營。" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23684f69'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='30' fill='white' font-family='Arial'%3E%E7%9C%9F%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* 頁尾吉祥物樣式與動畫 */
+    .footer-mascots {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      flex-grow: 1; /* 佔據中央空間 */
+    }
+
+    @media (min-width: 981px) {
+      .footer-mascots { padding-left: 150px; } /* 只在電腦版往右移 */
+    }
+
+    .footer-mascot-item {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+
+    /* 第 1、3 隻：跳起來 */
+    .footer-mascot-item:nth-child(odd) {
+      animation: footerMascotJump 2.5s infinite ease-in-out;
+    }
+
+    /* 第 2、4 隻：蹲下去 */
+    .footer-mascot-item:nth-child(even) {
+      animation: footerMascotSquat 2.5s infinite ease-in-out;
+      animation-delay: 1.25s; /* 讓它們輪流動作 */
+    }
+
+    @keyframes footerMascotJump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes footerMascotSquat {
+      0%, 100% { transform: scaleY(1) translateY(0); }
+      50% { transform: scaleY(0.7) translateY(10px); transform-origin: bottom; }
+    }
+
+    /* 原有 hero 樣式 ... */
+    .hero-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-item {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0;
+      animation: heroFade 25s infinite ease-in-out;
+      transform: scale(1.04);
+    }
+
+    .carousel-item:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .carousel-item:nth-child(2) {
+      animation-delay: 5s;
+    }
+
+    .carousel-item:nth-child(3) {
+      animation-delay: 10s;
+    }
+
+    .carousel-item:nth-child(4) {
+      animation-delay: 15s;
+    }
+
+    .carousel-item:nth-child(5) {
+      animation-delay: 20s;
+    }
+
+    @keyframes heroFade {
+
+      0%,
+      18% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+
+      22%,
+      96% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section id="hero" class="hero">
+    <header class="topbar">
+      <a class="brand" href="#hero" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+        <span class="brand-logo-group" style="display: flex; align-items: center;">
+          <img class="brand-logo" src="./images/recom-logo.png" alt="真如苑徽章" style="display: block;" width="40" height="40" />
+        </span>
+        <img src="./images/logo06.png" alt="logo06" style="height: 48px; width: auto; object-fit: contain;" width="100" height="48" />
+        <img class="brand-event-logo" src="./images/logo02-transparent.png" alt="佛學夏令營"
+          style="height: 32px; width: auto; object-fit: contain;" width="120" height="32" />
+      </a>
+      <nav class="nav">
+        <a href="#origin" style="display: flex; align-items: center; gap: 4px;"><img src="./images/logo06.png"
+            style="height: 24px; width: auto;" alt="Logo" width="24" height="24" />佛夏緣起</a>
+        <a href="#moments" style="display: flex; align-items: center; gap: 4px;"><img src="./images/logo06.png"
+            style="height: 24px; width: auto;" alt="Logo" width="24" height="24" />歷年紀錄</a>
+        <a href="#register" style="display: flex; align-items: center; gap: 4px;"><img src="./images/logo06.png"
+            style="height: 24px; width: auto;" alt="Logo" width="24" height="24" />報名資訊</a>
+      </nav>
+      <button class="mobile-menu-toggle" type="button" aria-label="開啟選單"
+        aria-expanded="false" aria-controls="mobile-main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <nav id="mobile-main-nav" class="mobile-main-nav" aria-label="手機與平板選單">
+      <a href="#origin"><img src="./images/logo06.png" alt="" width="20" height="20" />佛夏緣起</a>
+      <a href="#moments"><img src="./images/logo06.png" alt="" width="20" height="20" />歷年紀錄</a>
+      <a href="#register"><img src="./images/logo06.png" alt="" width="20" height="20" />報名資訊</a>
+    </nav>
+    <!-- 上方大圖輪播結構 -->
+    <div class="hero-carousel">
+      <div class="carousel-inner">
+        <img src="./images/camp-1.jpg" alt="佛夏學員奮力衝刺跨越感覺統合墊" class="carousel-item" />
+        <img src="./images/camp-2.jpg" alt="佛夏學員互助合作背負同伴前進" class="carousel-item" />
+        <img src="./images/camp-3.jpg" alt="佛夏學員歡呼慶賀完成團隊挑戰" class="carousel-item" />
+        <img src="./images/camp-4.jpg" alt="佛夏學員席地圍坐共同討論課題" class="carousel-item" />
+        <img src="./images/camp-5.jpg" alt="佛夏學員共聚一堂溫馨用餐" class="carousel-item" />
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-copy">
+      <h1>2026真如苑台灣<br />佛學夏令營</h1>
+      <div class="hero-description">
+        <p>AI時代來臨，資訊快速流動、世界變化迅速，孩子雖然擁有更多接觸外界的機會，也更容易在龐雜訊息與成長壓力中感到迷惘與不安⋯⋯</p>
+        <p>在日常生活中，那些無處安放的感受，讓我們接住孩子的心，在溫暖而安心的氛圍中，藉由佛法播下希望的小豆苗，陪伴孩子迎向更有力量的未來。</p>
+        <p>迎來立教90年的2026年，籌備團隊集結眾多青年與親部共同參與，更擴大舉辦，於北、中、南三地陸續展開，陪伴更多真如之子走進佛法、快樂學習。</p>
+      </div>
+    </div>
+
+    <!-- 跳躍吉祥物區域 -->
+    <div class="mascot-stage">
+      <div class="mascot-vehicle" id="jumping-mascot-vehicle">
+        <img src="./images/logo06.png" id="jumping-mascot" class="mascot-actor" alt="吉祥物跳躍" width="180" height="180">
+      </div>
+    </div>
+  </section>
+
+  <div class="page-shell">
+    <main>
+
+      <section id="values" class="section section-values">
+        <div class="values-mascot-wrap">
+          <img src="./images/logo05.png" alt="佛學夏令營吉祥物" class="values-mascot" />
+        </div>
+        <div class="section-heading">
+          <p class="eyebrow">孩子能帶走什麼</p>
+          <h2>三天，種下一輩子的力量</h2>
+          <p class="section-description">
+            迎來立教90年的2026年，籌備團隊集結眾多青年與親部共同參與，擴大舉辦，於北、中、南三地陸續展開，陪伴更多真如之子走進佛法、快樂學習。
+          </p>
+        </div>
+        <div class="values-grid">
+          <article class="value-card">
+            <div class="value-card-photo">
+              <img src="./images/camp-4.jpg" alt="孩子在夏令營中開心學習佛法" />
+            </div>
+            <div class="value-body">
+              <h3 style="display: flex; align-items: center; justify-content: center; gap: 12px;"><img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy">佛法的指導<img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy"></h3>
+              <p class="value-sub">勇氣、希望、未來</p>
+              <p>透過貼近生活的佛學課程，引導孩子學習在困境中保護自己、穩定情緒，逐步認識自己的價值與優點。透過活動學習合作、感恩一切、尊重他人，並帶回到日常與團體生活中。讓孩子帶著勇氣、希望，學會面對未來的挑戰。</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <div class="value-card-photo">
+              <img src="./images/camp-2.jpg" alt="大哥哥大姐姐溫暖陪伴學員互動" />
+            </div>
+            <div class="value-body">
+              <h3 style="display: flex; align-items: center; justify-content: center; gap: 12px;"><img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy">溫暖的陪伴<img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy"></h3>
+              <p class="value-sub">安定、安全、自在</p>
+              <p>夏令營不只是接觸佛法的起點，更是孩子建立連結與歸屬感的重要時刻。在安心溫暖的氛圍中，孩子能認識新朋友、學習與人和合相處，也能透過大哥哥、大姐姐的陪伴與榜樣，形塑正向價值，描繪自己想成為的模樣。</p>
+            </div>
+          </article>
+          <article id="origin" class="value-card">
+            <div class="value-card-photo">
+              <img class="origin-card-image" src="./images/S__103768207.jpg" alt="佛夏緣起" />
+            </div>
+            <div class="value-body">
+              <h3 style="display: flex; align-items: center; justify-content: center; gap: 12px;"><img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy">佛夏緣起<img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy"></h3>
+              <p>
+                真如苑台灣佛學夏令營的種子（以下簡稱佛夏），早在2004年便悄悄種下。懷抱著對真如之子們的關愛與期待，到了2006年11月下旬，籌辦者親自向真如繼主報告推動佛夏的初心、理念與希望達成的目標，也因此獲得溫暖的讚許與鼓勵。接著在同年12月初，與當時擔任國際部部長的烏飼先生進一步討論佛夏推動的方向與細節，得到寶貴的支持。
+              </p>
+              <p>
+                於是，這份美好的想法，在2007年正式展開行動。從第1次籌備會議開始，到第3次會議完成籌備小組的建立，真如苑台灣法友齊心投入、用心規劃，帶著共同的祈念，一步一步迎向2007年第一屆佛夏的到來。也正因為有這樣真摯的發心與法友的護持，佛夏才能從一顆初心的種子，慢慢成長為陪伴真如之子們學習與成長的溫暖活動。
+              </p>
+            </div>
+          </article>
+          <article class="value-card">
+            <div class="value-card-photo">
+              <img src="./images/S__103530639.jpg" alt="台灣限定吉祥物實拍"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center 85%;" />
+            </div>
+            <div class="value-body">
+              <h3 style="display: flex; align-items: center; justify-content: center; gap: 12px;"><img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy">台灣限定的佛夏體驗<img
+                  src="./images/logo06.png" style="height: 40px; width: auto; object-fit: contain;" width="40" height="40" loading="lazy"></h3>
+              <p class="value-sub">一場只有在台灣才能遇見的佛夏旅程</p>
+              <p>真如苑在1936年創立於日本，汲取兩千五百年的傳統，傳承佛教智慧與慈悲的理念至今，在世界各地已有超過一百多處精舍與佈教所。承蒙真如繼主的慈悲心意，這項僅於台灣舉辦的佛學夏令營，招收國小至高中的孩子。</p>
+              <p>真如苑相信，每一位都是佛陀的孩子，更是未來的希望！這不僅是一場夏令營，更是一份珍貴的祝福，讓孩子們在溫暖的陪伴中接觸佛法，帶回各自生活之中，秉持佛法實踐大乘精神。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="moments" class="section section-gallery">
+        <div class="section-heading">
+          <img src="./images/logo02-transparent.png" alt="佛學夏令營"
+            style="height: 84px; width: auto; object-fit: contain; margin: 0 auto 16px; display: block;" />
+          <h2>每屆都是傳承鏈上的重要一環</h2>
+        </div>
+        <div class="moments-grid">
+          <!-- 第 1 格：主題影片 -->
+          <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/isAKiN4Tmro?rel=0&showinfo=0&iv_load_policy=3&modestbranding=1"
+              title="2026 真如苑台灣夏令營"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- 第 2 格：感言回響 A -->
+          <article class="moment-quote">
+            <span class="quote-tag">真摯回響</span>
+            <p>「這是一個關於成長的旅程。修行不再是遙遠的經文，而是我雙腳踩下的每一步。在這裡，我找到了當下即是起點的勇氣。」</p>
+            <div class="quote-attr">— 國中組 謝○庭</div>
+          </article>
+
+          <!-- 第 3 格：感言回響 B -->
+          <article class="moment-quote secondary-quote">
+            <span class="quote-tag">傳承寄語</span>
+            <p>「我們所記錄的每一幀畫面，都是為了給未來的學弟妹留下一盞燈。讓他們知道，這條尋求真如的路上，你從不孤單。」</p>
+            <div class="quote-attr">— 佛夏營隊奉侍人員</div>
+          </article>
+
+          <!-- 第 4 格：活動影片 -->
+          <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/ahmia2ROEqk?rel=0&showinfo=0&iv_load_policy=3&modestbranding=1"
+              title="種下種子"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- 底部跑馬燈 (維持滿版) -->
+          <div class="moments-marquee-wrap">
+            <div class="moments-marquee">
+              <img src="./images/1.JPG" alt="精彩回憶 1" loading="lazy" width="400" height="267" />
+              <img src="./images/2.JPG" alt="精彩回憶 2" loading="lazy" width="400" height="267" />
+              <img src="./images/3.JPG" alt="精彩回憶 3" loading="lazy" width="400" height="267" />
+              <img src="./images/4.JPG" alt="精彩回憶 4" loading="lazy" width="400" height="267" />
+              <img src="./images/5.JPG" alt="精彩回憶 5" loading="lazy" width="400" height="267" />
+              <img src="./images/1.JPG" alt="精彩回憶 1" loading="lazy" width="400" height="267" />
+              <img src="./images/2.JPG" alt="精彩回憶 2" loading="lazy" width="400" height="267" />
+              <img src="./images/3.JPG" alt="精彩回憶 3" loading="lazy" width="400" height="267" />
+              <img src="./images/4.JPG" alt="精彩回憶 4" loading="lazy" width="400" height="267" />
+              <img src="./images/5.JPG" alt="精彩回憶 5" loading="lazy" width="400" height="267" />
+            </div>
+            <!-- 底部橫向 Logo -->
+            <img src="./images/logo02-transparent.png" alt="佛學夏令營"
+              style="height: 84px; width: auto; object-fit: contain; margin: 16px auto 0; display: block;" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 報名資訊區 -->
+      <section id="register" class="section section-register">
+        <div class="section-heading" style="text-align: center; margin-bottom: 32px;">
+          <div style="margin-bottom: 16px;">
+            <img src="./images/logo06.png" alt="吉祥物"
+              style="height: 120px; width: auto; object-fit: contain; margin: 0 auto; display: block;" width="120" height="120" loading="lazy" />
+          </div>
+          <p class="eyebrow" style="color: var(--accent); margin-bottom: 12px; font-weight: 700;">REGISTRATION</p>
+          <h2 style="font-size: 2.8rem; line-height: 1.3; margin-bottom: 12px; color: var(--text-dark);">2026 台灣佛學夏令營
+            北中南報名</h2>
+          <p
+            style="max-width: none; margin: 0 auto; line-height: 1.8; color: var(--text); font-size: 1.1rem; white-space: nowrap;">
+            請選擇欲參加的區域，點擊下方按鈕連結進入專屬線上報名表，期待與您一同在佛法中成長！
+          </p>
+        </div>
+
+        <!-- 課程海報 -->
+        <div style="margin-bottom: 50px; text-align: center;">
+          <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; color: var(--text-dark);">課程資料參考</h3>
+          <figure
+            style="margin: 0 auto; max-width: 900px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);">
+            <img src="./images/台北課表.png" alt="課程資料參考" style="width: 100%; height: auto; display: block;" loading="lazy" width="900" height="636" />
+          </figure>
+        </div>
+
+        <!-- 北中南三區卡片 -->
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto;">
+
+          <!-- 北區 -->
+          <article class="register-card">
+            <figure style="margin: 0; width: 100%; border-bottom: 1px solid var(--line); background: #fff;">
+              <img src="./images/本部海報.png" alt="北區海報" style="width: 100%; height: auto; display: block;" loading="lazy" width="600" height="848" />
+            </figure>
+            <div style="padding: 32px 24px; text-align: center; flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin: 0 0 24px; font-size: 1.6rem; font-weight: 700; color: var(--text-dark);">北區</h3>
+              <div style="display: flex; flex-direction: column; gap: 16px; margin-top: auto;">
+                <a href="https://forms.gle/x5rjwL3TxFd5r6QC8" target="_blank" class="button button-primary"
+                  style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
+                <a href="https://forms.gle/WmTx62JrUkfhSMXP6" target="_blank" class="button button-secondary"
+                  style="width: 100%; display: flex; justify-content: center; text-decoration: none; border: 2px solid rgba(104, 79, 105, 0.4); color: var(--accent-deep); background: transparent;">學員報名</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 中區 -->
+          <article class="register-card">
+            <figure style="margin: 0; width: 100%; border-bottom: 1px solid var(--line); background: #fff;">
+              <img src="./images/中區海報.png" alt="中區海報" style="width: 100%; height: auto; display: block;" loading="lazy" width="600" height="848" />
+            </figure>
+            <div style="padding: 32px 24px; text-align: center; flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin: 0 0 24px; font-size: 1.6rem; font-weight: 700; color: var(--text-dark);">中區</h3>
+              <div style="display: flex; flex-direction: column; gap: 16px; margin-top: auto;">
+                <a href="https://forms.gle/kefc694PSYtfdQBs6" target="_blank" class="button button-primary"
+                  style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
+                <a href="https://forms.gle/KLtSv7pz6TopgNJy9" target="_blank" class="button button-secondary"
+                  style="width: 100%; display: flex; justify-content: center; text-decoration: none; border: 2px solid rgba(104, 79, 105, 0.4); color: var(--accent-deep); background: transparent;">學員報名</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 南區 -->
+          <article class="register-card">
+            <figure style="margin: 0; width: 100%; border-bottom: 1px solid var(--line); background: #fff;">
+              <img src="./images/南區海報.png" alt="南區海報" style="width: 100%; height: auto; display: block;" loading="lazy" width="600" height="848" />
+            </figure>
+            <div style="padding: 32px 24px; text-align: center; flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin: 0 0 24px; font-size: 1.6rem; font-weight: 700; color: var(--text-dark);">南區</h3>
+              <div style="display: flex; flex-direction: column; gap: 16px; margin-top: auto;">
+                <a href="https://forms.gle/Ug8YpsfANiGgsqtz9" target="_blank" class="button button-primary"
+                  style="width: 100%; display: flex; justify-content: center; text-decoration: none;">奉侍人員報名</a>
+                <a href="https://forms.gle/un4iM9c3z95gCch98" target="_blank" class="button button-secondary"
+                  style="width: 100%; display: flex; justify-content: center; text-decoration: none; border: 2px solid rgba(104, 79, 105, 0.4); color: var(--accent-deep); background: transparent;">學員報名</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand" style="display: flex; align-items: center; gap: 8px;">
+          <span class="brand-logo-group brand-logo-group-footer" style="display: flex; align-items: center;">
+            <img class="brand-logo brand-logo-footer" src="./images/recom-logo.png" alt="Recom logo"
+              style="display: block;" />
+          </span>
+          <img src="./images/logo06.png" alt="logo06" style="height: 42px; width: auto; object-fit: contain;" width="88" height="42" loading="lazy" />
+          <div style="display: flex; align-items: center;">
+            <img class="brand-event-logo brand-event-logo-footer" src="./images/logo02-transparent.png" alt="佛學夏令營"
+              style="height: 28px; width: auto; object-fit: contain;" width="105" height="28" />
+          </div>
+        </div>
+
+        <div class="footer-mascots">
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+          <img src="./images/logo06.png" class="footer-mascot-item" alt="吉祥物" width="60" height="60" loading="lazy" />
+        </div>
+
+        <div class="footer-links">
+          <a id="official-site-link" href="https://www.shinnyo-en.org.tw/" target="_blank" rel="noreferrer">真如苑官方網站</a>
+          <a id="facebook-link" href="https://www.facebook.com/profile.php?id=100068384880413" target="_blank" rel="noreferrer">Facebook</a>
+          <span id="contact-phone"></span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- 浮動按鈕 -->
+  <div class="floating-controls">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="scroll-btn scroll-top" title="回最上方">
+      <img src="./images/logo06.png" alt="Logo" loading="lazy" width="32" height="32" />
+      <span>最上頁</span>
+    </button>
+
+    <button onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})"
+      class="scroll-btn scroll-bottom" title="至最下頁">
+      <span>最下頁</span>
+      <img src="./images/logo06.png" alt="Logo" loading="lazy" width="32" height="32" />
+    </button>
+  </div>
+
+  <script src="./site-config.js"></script>
+  <script>
+    // 吉祥物跳躍與音效邏輯
+    const mascot = document.getElementById('jumping-mascot');
+    const mascotVehicle = document.getElementById('jumping-mascot-vehicle');
+    const mascotStage = document.querySelector('.mascot-stage');
+    const topbar = document.querySelector('.hero > .topbar');
+    const mascotMotion = {
+      direction: 1,
+      range: 0,
+      pixelsPerTurn: 56,
+      bobHeight: 8,
+      jumpHeight: 278,
+      travelDuration: 7200,
+      rightJumpDuration: 1600,
+      leftPauseDuration: 700,
+      rightPauseDuration: 900,
+      rafId: null,
+      timeoutId: null
+    };
+
+    function syncMascotRange() {
+      if (!mascot || !mascotStage) return;
+
+      const topbarWidth = topbar?.getBoundingClientRect().width || mascotStage.getBoundingClientRect().width;
+      const mascotWidth = mascot.getBoundingClientRect().width || (window.innerWidth <= 768 ? 75 : 160);
+      const maxRange = Math.max(Math.round((topbarWidth - mascotWidth) / 2), 0);
+      const styles = getComputedStyle(mascotStage);
+
+      mascotMotion.range = maxRange;
+      mascotMotion.bobHeight = Math.abs(parseFloat(styles.getPropertyValue('--mascot-bob-height'))) || 10;
+      mascotMotion.jumpHeight = Math.abs(parseFloat(styles.getPropertyValue('--mascot-jump-right'))) || 278;
+      mascotMotion.pixelsPerTurn = window.innerWidth <= 768 ? 68 : 120;
+      mascotStage.style.setProperty('--mascot-range-px', `${maxRange}px`);
+    }
+
+    // 模擬可愛的音效 (Web Audio API)
+    function playEffect(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        if (type === 'edge-jump') {
+          oscillator.type = 'triangle';
+          oscillator.frequency.setValueAtTime(240, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(1080, audioCtx.currentTime + 0.14);
+          oscillator.frequency.exponentialRampToValueAtTime(520, audioCtx.currentTime + 0.34);
+          gainNode.gain.setValueAtTime(0.22, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.015, audioCtx.currentTime + 0.4);
+        } else if (type === 'jump') {
+          // Q彈的跳躍聲 (Boing!)
+          oscillator.type = 'triangle';
+          oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.1);
+          oscillator.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.3);
+          gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        } else {
+          // 輕微的滾動聲 (Whoosh)
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.5);
+          gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+        }
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.8);
+      } catch (e) {
+        console.log('音效需使用者互動後才能播放');
+      }
+    }
+
+    function easeInOutSine(t) {
+      return -(Math.cos(Math.PI * t) - 1) / 2;
+    }
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function applyMascotTransform(x, y, rotationDeg, scale = 1) {
+      mascotVehicle.style.opacity = '1';
+      mascotVehicle.style.transform = `translateX(${x}px) translateY(${y}px) scale(${scale})`;
+      mascot.style.transform = `rotate(${rotationDeg}deg)`;
+    }
+
+    function animateRoll(direction) {
+      const startX = direction === 1 ? -mascotMotion.range : mascotMotion.range;
+      const endX = -startX;
+      const totalDistance = Math.abs(endX - startX);
+      const turns = totalDistance / mascotMotion.pixelsPerTurn;
+      const finalRotation = turns * 360 * direction;
+      let startTime = null;
+
+      clearTimeout(mascotMotion.timeoutId);
+
+      const frame = (timestamp) => {
+        if (startTime === null) {
+          startTime = timestamp;
+          playEffect('slide');
+        }
+
+        const progress = Math.min((timestamp - startTime) / mascotMotion.travelDuration, 1);
+        const eased = easeInOutSine(progress);
+        const x = startX + (endX - startX) * eased;
+        const distanceMoved = Math.abs(x - startX);
+        const rotation = (distanceMoved / mascotMotion.pixelsPerTurn) * 360 * direction;
+        const bob = -Math.abs(Math.sin((distanceMoved / mascotMotion.pixelsPerTurn) * Math.PI)) * mascotMotion.bobHeight;
+
+        applyMascotTransform(x, bob, rotation, 1);
+
+        if (progress < 1) {
+          mascotMotion.rafId = requestAnimationFrame(frame);
+          return;
+        }
+
+        applyMascotTransform(endX, 0, finalRotation, 1);
+
+        if (direction === 1) {
+          mascotMotion.timeoutId = setTimeout(() => animateEdgeJump(endX, finalRotation, -1), 120);
+        } else {
+          mascotMotion.timeoutId = setTimeout(() => animateEdgeJump(endX, finalRotation, 1), 120);
+        }
+      };
+
+      mascotMotion.rafId = requestAnimationFrame(frame);
+    }
+
+    function animateEdgeJump(x, baseRotation, nextDirection) {
+      let startTime = null;
+      let jumpSoundPlayed = false;
+
+      const frame = (timestamp) => {
+        if (startTime === null) {
+          startTime = timestamp;
+        }
+
+        if (!jumpSoundPlayed) {
+          playEffect('edge-jump');
+          jumpSoundPlayed = true;
+        }
+
+        const progress = Math.min((timestamp - startTime) / mascotMotion.rightJumpDuration, 1);
+        const launch = easeOutCubic(progress);
+        const arc = Math.sin(progress * Math.PI);
+        const y = -mascotMotion.jumpHeight * arc;
+        const rotation = baseRotation + launch * 140;
+        const scale = 1 + arc * 0.14;
+
+        applyMascotTransform(x, y, rotation, scale);
+
+        if (progress < 1) {
+          mascotMotion.rafId = requestAnimationFrame(frame);
+          return;
+        }
+
+        applyMascotTransform(x, 0, baseRotation + 140, 1);
+        mascotMotion.direction = nextDirection;
+        const pause = nextDirection === -1 ? mascotMotion.rightPauseDuration : mascotMotion.leftPauseDuration;
+        mascotMotion.timeoutId = setTimeout(() => animateRoll(mascotMotion.direction), pause);
+      };
+
+      mascotMotion.rafId = requestAnimationFrame(frame);
+    }
+
+    function restartMascotAnimation() {
+      if (!mascot || !mascotStage) return;
+      cancelAnimationFrame(mascotMotion.rafId);
+      clearTimeout(mascotMotion.timeoutId);
+      syncMascotRange();
+      mascotMotion.direction = 1;
+      applyMascotTransform(-mascotMotion.range, 0, 0, 1);
+      mascotMotion.timeoutId = setTimeout(() => animateRoll(mascotMotion.direction), 500);
+    }
+
+    syncMascotRange();
+    window.addEventListener('resize', restartMascotAnimation);
+    restartMascotAnimation();
+
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMainNav = document.getElementById('mobile-main-nav');
+
+    function closeMobileMenu() {
+      if (!menuToggle || !mobileMainNav) return;
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileMainNav.classList.remove('mobile-active');
+    }
+
+    if (menuToggle && mobileMainNav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMainNav.classList.toggle('mobile-active', isOpen);
+      });
+
+      mobileMainNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 980) closeMobileMenu();
+      });
+    }
+  </script>
+</body>
+
+</html>
