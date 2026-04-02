@@ -446,8 +446,12 @@ h3 {
   padding: 14px 24px;
   border-radius: 999px;
   border: 1px solid transparent;
-  font-weight: 500;
-  transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 6px 18px rgba(89, 67, 53, 0.08);
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
   cursor: pointer;
 }
 
@@ -457,14 +461,38 @@ h3 {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, #fff4e5, #f0d1a0);
-  color: #4b3243;
+  border-color: rgba(229, 192, 126, 0.6);
+  background: linear-gradient(135deg, #fff4db 0%, #f3d59a 52%, #ecc57d 100%);
+  color: #4a3042;
 }
 
 .button-secondary {
-  border-color: rgba(255, 250, 244, 0.4);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fffaf6;
+  border-color: rgba(130, 108, 126, 0.34);
+  background: linear-gradient(180deg, rgba(255, 253, 250, 0.98) 0%, rgba(252, 247, 241, 0.94) 100%);
+  color: #5a4558;
+}
+
+.button-tertiary {
+  border-color: rgba(168, 170, 116, 0.4);
+  background: linear-gradient(180deg, rgba(249, 250, 238, 0.98) 0%, rgba(237, 241, 205, 0.95) 100%);
+  color: #55603e;
+}
+
+.button-primary:hover {
+  border-color: rgba(216, 173, 94, 0.8);
+  background: linear-gradient(135deg, #fff2d2 0%, #efcf8d 52%, #e7b963 100%);
+}
+
+.button-secondary:hover {
+  border-color: rgba(130, 108, 126, 0.5);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 241, 235, 0.98) 100%);
+  color: #4f394d;
+}
+
+.button-tertiary:hover {
+  border-color: rgba(146, 149, 93, 0.56);
+  background: linear-gradient(180deg, rgba(248, 250, 230, 1) 0%, rgba(229, 235, 183, 0.98) 100%);
+  color: #4a5534;
 }
 
 .hero-panel,
@@ -1189,6 +1217,31 @@ h3 {
     grid-template-columns: 1fr !important;
   }
 
+  .register-info-card {
+    padding: 22px 18px;
+    margin-bottom: 32px;
+  }
+
+  .register-info-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .register-info-mascot {
+    width: 132px;
+    margin: 4px auto 12px;
+  }
+
+  .register-info-block h3 {
+    font-size: 2rem;
+  }
+
+  .register-info-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
   /* 報名卡片行動版置中 */
   #register > div[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
@@ -1247,6 +1300,147 @@ h3 {
 .register-form {
   display: grid;
   gap: 16px;
+}
+
+.register-info-card {
+  margin: 0 auto 44px;
+  padding: 30px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.84);
+  background:
+    radial-gradient(circle at top right, rgba(230, 199, 136, 0.16), transparent 24%),
+    linear-gradient(160deg, rgba(255, 252, 247, 0.99) 0%, rgba(250, 245, 237, 0.95) 100%);
+  box-shadow:
+    0 20px 48px rgba(89, 67, 53, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+.register-info-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.register-info-badge,
+.register-info-deadline {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.register-info-badge {
+  color: #5f4834;
+  background: linear-gradient(135deg, #fff1d6 0%, #f2d39c 100%);
+  border: 1px solid rgba(222, 179, 97, 0.45);
+}
+
+.register-info-deadline {
+  color: #6b4d53;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(149, 117, 141, 0.24);
+  white-space: nowrap;
+}
+
+.register-info-block h3,
+.register-info-label {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.register-info-mascot {
+  width: min(190px, 28vw);
+  height: auto;
+  margin: 2px auto 10px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(89, 67, 53, 0.12));
+}
+
+.register-info-block h3 {
+  font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+  line-height: 1.2;
+}
+
+.register-info-intro,
+.register-info-label {
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.register-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.register-info-divider {
+  height: 1px;
+  margin-top: 22px;
+  background: linear-gradient(90deg, transparent 0%, rgba(170, 138, 102, 0.32) 18%, rgba(170, 138, 102, 0.32) 82%, transparent 100%);
+}
+
+.register-info-panel {
+  min-height: 100%;
+  padding: 22px 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(206, 191, 176, 0.4);
+  position: relative;
+}
+
+.register-info-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  border-radius: 24px 0 0 24px;
+  opacity: 0.9;
+}
+
+.register-info-panel-date::before {
+  background: linear-gradient(180deg, #d59873 0%, #efc8b2 100%);
+}
+
+.register-info-panel-qualify::before {
+  background: linear-gradient(180deg, #d9b46f 0%, #e8d3a2 100%);
+}
+
+.register-info-panel-fee::before {
+  background: linear-gradient(180deg, #95a164 0%, #d6ddb0 100%);
+}
+
+.register-info-panel p,
+.register-info-block p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.register-info-list {
+  margin: 10px 0 0;
+  padding-left: 1.2em;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.register-info-list.compact {
+  line-height: 1.75;
+}
+
+.register-info-note {
+  margin-top: 12px !important;
+  font-size: 0.92rem;
+  color: var(--muted);
 }
 
 .register-form-wide {
@@ -1492,6 +1686,10 @@ h3 {
 
 .origin-card-image {
   object-position: center 28%;
+}
+
+.value-card .value-body p:not(.value-sub) {
+  text-indent: 2em;
 }
 
 .value-card:hover .value-card-photo img {
