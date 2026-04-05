@@ -1163,6 +1163,12 @@ h3 {
     border-radius: 28px;
   }
 
+  .register-info-panel p,
+  .register-info-panel ul,
+  .register-info-panel .register-info-note {
+    text-align: left;
+  }
+
   .register-mascot-wrap img {
     height: 80px !important;
   }
@@ -2359,6 +2365,12 @@ h3 {
   .register-info-panel {
     padding: 14px 14px 14px 18px !important;
     border-radius: 14px !important;
+  }
+
+  .register-info-panel p,
+  .register-info-panel ul,
+  .register-info-panel .register-info-note {
+    text-align: left !important;
   }
 
   .register-info-panel::before {
