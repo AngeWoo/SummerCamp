@@ -2276,6 +2276,10 @@ h3 {
     transform: scale(0.85);
     transform-origin: bottom right;
   }
+
+  .moment-quote p {
+    margin-top: 1em;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2412,6 +2416,7 @@ h3 {
   .moment-quote p {
     font-size: 0.98rem !important;
     line-height: 1.7;
+    margin-top: 1em;
   }
 
   .moments-marquee img {
