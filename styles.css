@@ -1841,6 +1841,7 @@ h3 {
   font-weight: 700;
   letter-spacing: 0.16em;
   color: var(--accent);
+  text-align: center;
 }
 
 .value-body h3 {
