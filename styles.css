@@ -1451,6 +1451,29 @@ h3 {
   margin: 32px auto 0;
 }
 
+.roster-buttons {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  gap: 10px;
+  width: 100%;
+}
+
+.roster-buttons .button-roster {
+  flex: 1 1 0;
+  width: calc(50% - 5px);
+  min-width: 0;
+  padding-inline: 12px;
+  border-color: rgba(104, 79, 105, 0.22);
+  color: var(--accent-deep);
+  background: linear-gradient(135deg, rgba(247, 238, 248, 0.98) 0%, rgba(234, 218, 235, 0.96) 100%);
+  cursor: pointer;
+}
+
+.roster-buttons .button-roster:hover {
+  border-color: rgba(104, 79, 105, 0.4);
+  background: linear-gradient(135deg, rgba(250, 244, 251, 1) 0%, rgba(226, 205, 228, 1) 100%);
+}
+
 .register-info-panel {
   min-height: 100%;
   padding: 22px 20px;
@@ -2568,10 +2591,12 @@ h3 {
 
 .course-modal-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: #fff;
   width: 100%;
-  max-width: 720px;
-  max-height: 85vh;
+  max-width: 820px;
+  max-height: 90dvh;
   border-radius: 36px;
   box-shadow: 
     0 40px 100px rgba(89, 67, 53, 0.25),
@@ -2580,6 +2605,12 @@ h3 {
   transform: translateY(30px) scale(0.95);
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 10px solid #fff;
+}
+
+.course-modal.is-pdf .course-modal-content {
+  width: min(1120px, calc(100vw - 40px));
+  max-width: 1120px;
+  height: min(900px, 90dvh);
 }
 
 .course-modal.is-active .course-modal-content {
@@ -2612,9 +2643,40 @@ h3 {
   transform: rotate(90deg) scale(1.1);
 }
 
+.course-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  gap: 16px;
+  min-height: 64px;
+  padding: 12px 72px 12px 18px;
+  background: #fbf9f4;
+  border-bottom: 1px solid rgba(92, 69, 93, 0.12);
+}
+
+.course-modal-header h3 {
+  margin: 0;
+  color: var(--accent-deep);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.course-modal-open-file {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 1px solid rgba(104, 79, 105, 0.2);
+  border-radius: 999px;
+  color: var(--accent-deep);
+  background: #fff;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
 .course-modal-body {
   width: 100%;
-  height: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
   overflow-y: auto;
   border-radius: 26px;
   background: #fbf9f4;
@@ -2622,11 +2684,38 @@ h3 {
   scrollbar-color: #dcd0bc transparent;
 }
 
+.course-modal.is-pdf .course-modal-body {
+  display: flex;
+  overflow: hidden;
+  border-radius: 0 0 26px 26px;
+  background: #525659;
+}
+
+.course-modal.is-image .course-modal-body {
+  overflow: auto;
+}
+
 .course-modal-body img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 6px;
+}
+
+.course-modal-body img[hidden],
+.course-modal-body iframe[hidden] {
+  display: none;
+}
+
+.course-modal-body iframe {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 0;
+  border: 0;
+  background: #525659;
 }
 
 /* 自定義側邊捲軸 */
@@ -2639,17 +2728,55 @@ h3 {
 }
 
 @media (max-width: 640px) {
-  .course-modal-content {
-    border-radius: 24px;
-    border-width: 6px;
-    max-height: 80vh;
+  .course-modal {
+    padding: 8px;
   }
+
+  .course-modal-content {
+    border-radius: 20px;
+    border-width: 4px;
+    max-height: calc(100dvh - 16px);
+  }
+
+  .course-modal.is-pdf .course-modal-content {
+    width: calc(100vw - 16px);
+    height: calc(100dvh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+
   .course-modal-close {
     width: 36px;
     height: 36px;
     font-size: 22px;
     top: 10px;
     right: 10px;
+  }
+
+  .course-modal-header {
+    min-height: 56px;
+    padding: 8px 52px 8px 12px;
+  }
+
+  .course-modal-header h3 {
+    font-size: 0.98rem;
+  }
+
+  .course-modal-open-file {
+    padding: 7px 10px;
+    font-size: 0.78rem;
+  }
+
+  .course-modal-body {
+    border-radius: 14px;
+  }
+
+  .course-modal.is-pdf .course-modal-body {
+    border-radius: 0 0 14px 14px;
+  }
+
+  .course-modal-body iframe {
+    height: 100%;
+    min-height: 0;
   }
 }
 @media (max-width: 1024px) {
@@ -2730,5 +2857,17 @@ h3 {
   .register-card .button.button-tertiary {
     border-color: rgba(172, 181, 117, 0.34);
     background: linear-gradient(180deg, rgba(248, 251, 235, 0.98) 0%, rgba(234, 241, 199, 0.96) 100%);
+  }
+
+  .register-card .roster-buttons {
+    gap: 8px;
+  }
+
+  .register-card .roster-buttons .button-roster {
+    flex-basis: 0;
+    width: calc(50% - 4px);
+    min-height: 52px;
+    padding: 0 8px !important;
+    font-size: 1rem !important;
   }
 }

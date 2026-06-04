@@ -15,23 +15,46 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
   <script>
-    /* 核心課程表控制邏輯 - 強制顯示版 */
-    window.showCourseSchedule = function(imageUrl, title) {
-      console.log('Open Schedule:', imageUrl);
+    /* 共用檔案預覽視窗：支援圖片與 PDF */
+    window.showFilePreview = function(fileUrl, title) {
       var modal = document.getElementById('courseModal');
       var img = document.getElementById('modalImg');
-      if (modal && img) {
-        img.src = imageUrl;
+      var pdf = document.getElementById('modalPdf');
+      var modalTitle = document.getElementById('modalTitle');
+      var openFile = document.getElementById('modalOpenFile');
+      if (modal && img && pdf) {
+        var isPdf = /\.pdf(?:[?#].*)?$/i.test(fileUrl);
+        modal.classList.toggle('is-pdf', isPdf);
+        modal.classList.toggle('is-image', !isPdf);
+        img.hidden = isPdf;
+        img.style.display = isPdf ? 'none' : 'block';
+        pdf.hidden = !isPdf;
+        pdf.style.display = isPdf ? 'block' : 'none';
+        img.src = isPdf ? '' : fileUrl;
+        pdf.src = isPdf ? fileUrl + '#view=FitH' : '';
         img.alt = title;
+        if (modalTitle) modalTitle.textContent = title;
+        if (openFile) openFile.href = fileUrl;
         modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        var closeButton = modal.querySelector('.course-modal-close');
+        if (closeButton) closeButton.focus();
       }
     };
+    window.showCourseSchedule = window.showFilePreview;
     window.closeCourseModal = function() {
       var modal = document.getElementById('courseModal');
       if (modal) {
         modal.classList.remove('is-active');
+        modal.classList.remove('is-pdf', 'is-image');
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        var pdf = document.getElementById('modalPdf');
+        if (pdf) {
+          pdf.src = '';
+          pdf.style.display = 'none';
+        }
       }
     };
   </script>
@@ -403,6 +426,10 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
                 <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏北區課程表.jpg', '北區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
+                <div class="roster-buttons">
+                  <button type="button" onclick="window.showFilePreview('./images/北1.jpg', '北區學員名單')" class="button button-roster">學員名單</button>
+                  <button type="button" onclick="window.showFilePreview('./images/北2.pdf', '北區奉侍名單')" class="button button-roster">奉侍名單</button>
+                </div>
               </div>
             </div>
           </article>
@@ -421,6 +448,10 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
                 <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏中區課程表.jpg', '中區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
+                <div class="roster-buttons">
+                  <button type="button" onclick="window.showFilePreview('./images/中1.jpg', '中區學員名單')" class="button button-roster">學員名單</button>
+                  <button type="button" onclick="window.showFilePreview('./images/中2.pdf', '中區奉侍名單')" class="button button-roster">奉侍名單</button>
+                </div>
               </div>
             </div>
           </article>
@@ -439,6 +470,10 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
                 <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏南區課程表.jpg', '南區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
+                <div class="roster-buttons">
+                  <button type="button" onclick="window.showFilePreview('./images/南1.jpg', '南區學員名單')" class="button button-roster">學員名單</button>
+                  <button type="button" onclick="window.showFilePreview('./images/南2.pdf', '南區奉侍名單')" class="button button-roster">奉侍名單</button>
+                </div>
               </div>
             </div>
           </article>
@@ -519,15 +554,7 @@
 
   <script src="./site-config.js"></script>
   <script>
-    window.openCourseModal = function(u, t) {
-      var m = document.getElementById('courseModal');
-      var i = document.getElementById('modalImg');
-      if (m && i) { i.src = u; m.classList.add('is-active'); document.body.style.overflow = 'hidden'; }
-    };
-    window.closeCourseModal = function() {
-      var m = document.getElementById('courseModal');
-      if (m) { m.classList.remove('is-active'); document.body.style.overflow = ''; }
-    };
+    window.openCourseModal = window.showFilePreview;
   </script>
   <script>
     // 吉祥物跳躍與音效邏輯
@@ -749,6 +776,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       const overlay = document.querySelector('.course-modal-overlay');
       if (overlay) overlay.addEventListener('click', window.closeCourseModal);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') window.closeCourseModal();
+      });
       updateLineShareLink();
 
       const lineShareLink = document.getElementById('line-share-link');
@@ -757,13 +787,18 @@
       }
     });
   </script>
-  <!-- 可愛風課程表模態框 -->
-  <div id="courseModal" class="course-modal">
+  <!-- 圖片與 PDF 檔案預覽視窗 -->
+  <div id="courseModal" class="course-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="course-modal-overlay"></div>
     <div class="course-modal-content">
       <button class="course-modal-close" onclick="window.closeCourseModal()" aria-label="關閉視窗">&times;</button>
+      <div class="course-modal-header">
+        <h3 id="modalTitle">檔案預覽</h3>
+        <a id="modalOpenFile" href="#" target="_blank" rel="noopener" class="course-modal-open-file">另開檔案</a>
+      </div>
       <div class="course-modal-body">
-        <img id="modalImg" src="" alt="課程表" loading="lazy" />
+        <img id="modalImg" src="" alt="檔案預覽" />
+        <iframe id="modalPdf" title="PDF 檔案預覽" src="" hidden></iframe>
       </div>
     </div>
   </div>
