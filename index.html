@@ -13,7 +13,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=20260605-file-preview" />
   <script>
     /* 共用檔案預覽視窗：支援圖片與 PDF */
     window.showFilePreview = function(fileUrl, title) {
@@ -426,7 +426,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
                 <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏北區課程表.jpg', '北區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
-                <div class="roster-buttons">
+                <div class="roster-buttons" style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 10px; width: 100%;">
                   <button type="button" onclick="window.showFilePreview('./images/北1.jpg', '北區學員名單')" class="button button-roster">學員名單</button>
                   <button type="button" onclick="window.showFilePreview('./images/北2.pdf', '北區奉侍名單')" class="button button-roster">奉侍名單</button>
                 </div>
@@ -448,7 +448,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
                 <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏中區課程表.jpg', '中區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
-                <div class="roster-buttons">
+                <div class="roster-buttons" style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 10px; width: 100%;">
                   <button type="button" onclick="window.showFilePreview('./images/中1.jpg', '中區學員名單')" class="button button-roster">學員名單</button>
                   <button type="button" onclick="window.showFilePreview('./images/中2.pdf', '中區奉侍名單')" class="button button-roster">奉侍名單</button>
                 </div>
@@ -470,7 +470,7 @@
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">學員報名</a>
                 <a href="javascript:void(0);" onclick="window.showCourseSchedule('./images/佛夏南區課程表.jpg', '南區課程表')" class="button button-tertiary"
                   style="width: 100%; display: flex; justify-content: center; text-decoration: none;">課程表</a>
-                <div class="roster-buttons">
+                <div class="roster-buttons" style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 10px; width: 100%;">
                   <button type="button" onclick="window.showFilePreview('./images/南1.jpg', '南區學員名單')" class="button button-roster">學員名單</button>
                   <button type="button" onclick="window.showFilePreview('./images/南2.pdf', '南區奉侍名單')" class="button button-roster">奉侍名單</button>
                 </div>
@@ -787,18 +787,218 @@
       }
     });
   </script>
+  <style>
+    /* 最後覆蓋層：避免舊 CSS 快取或全站 img/button 規則影響名單按鈕與檔案預覽。 */
+    .roster-buttons {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+
+    .roster-buttons .button-roster {
+      flex: 1 1 0 !important;
+      width: auto !important;
+      min-width: 0 !important;
+      min-height: 52px !important;
+      padding: 0 10px !important;
+      white-space: nowrap !important;
+    }
+
+    .course-modal {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 2147483647 !important;
+      display: none !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 20px !important;
+    }
+
+    .course-modal.is-active {
+      display: flex !important;
+    }
+
+    .course-modal-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      background: rgba(0, 0, 0, 0.72) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .course-modal-content {
+      position: relative !important;
+      z-index: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      width: min(900px, calc(100vw - 40px)) !important;
+      max-height: 90dvh !important;
+      background: #fff !important;
+      border: 8px solid #fff !important;
+      border-radius: 30px !important;
+      overflow: hidden !important;
+      box-shadow: 0 40px 110px rgba(0, 0, 0, 0.34) !important;
+    }
+
+    .course-modal.is-pdf .course-modal-content {
+      width: min(1120px, calc(100vw - 40px)) !important;
+      height: min(900px, 90dvh) !important;
+    }
+
+    .course-modal-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      flex: 0 0 auto !important;
+      min-height: 58px !important;
+      padding: 8px 10px 8px 18px !important;
+      background: #fff !important;
+      border-bottom: 1px solid rgba(92, 69, 93, 0.12) !important;
+    }
+
+    .course-modal-header h3 {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      font-size: 1.08rem !important;
+      line-height: 1.35 !important;
+      text-align: left !important;
+      color: var(--accent-deep) !important;
+    }
+
+    .course-modal-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      flex: 0 0 auto !important;
+    }
+
+    .course-modal-open-file {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 36px !important;
+      padding: 0 14px !important;
+      border: 1px solid rgba(104, 79, 105, 0.2) !important;
+      border-radius: 999px !important;
+      background: #fff !important;
+      color: var(--accent-deep) !important;
+      font-size: 0.88rem !important;
+      font-weight: 800 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+    }
+
+    .course-modal-close {
+      position: static !important;
+      flex: 0 0 auto !important;
+      width: 44px !important;
+      height: 44px !important;
+      padding: 0 !important;
+      border: none !important;
+      border-radius: 999px !important;
+      background: #ff6b6b !important;
+      color: #fff !important;
+      font-size: 30px !important;
+      line-height: 1 !important;
+      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.32) !important;
+      cursor: pointer !important;
+    }
+
+    .course-modal-body {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      width: 100% !important;
+      overflow: auto !important;
+      background: #fbf9f4 !important;
+    }
+
+    .course-modal.is-pdf .course-modal-body {
+      display: flex !important;
+      overflow: hidden !important;
+      background: #525659 !important;
+    }
+
+    #modalImg[hidden],
+    #modalPdf[hidden] {
+      display: none !important;
+    }
+
+    #modalImg {
+      display: block;
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      border-radius: 0 !important;
+    }
+
+    #modalPdf {
+      display: block;
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 100% !important;
+      min-height: 0 !important;
+      border: 0 !important;
+      background: #525659 !important;
+    }
+
+    @media (max-width: 640px) {
+      .course-modal {
+        padding: 8px !important;
+      }
+
+      .course-modal-content {
+        width: calc(100vw - 16px) !important;
+        max-height: calc(100dvh - 16px) !important;
+        border-width: 4px !important;
+        border-radius: 20px !important;
+      }
+
+      .course-modal.is-pdf .course-modal-content {
+        height: calc(100dvh - 16px) !important;
+      }
+
+      .course-modal-header {
+        min-height: 54px !important;
+        padding: 6px 6px 6px 12px !important;
+      }
+
+      .course-modal-header h3 {
+        font-size: 0.98rem !important;
+      }
+
+      .course-modal-open-file {
+        min-height: 34px !important;
+        padding: 0 10px !important;
+        font-size: 0.78rem !important;
+      }
+
+      .course-modal-close {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 26px !important;
+      }
+    }
+  </style>
+
   <!-- 圖片與 PDF 檔案預覽視窗 -->
   <div id="courseModal" class="course-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="course-modal-overlay"></div>
     <div class="course-modal-content">
-      <button class="course-modal-close" onclick="window.closeCourseModal()" aria-label="關閉視窗">&times;</button>
       <div class="course-modal-header">
         <h3 id="modalTitle">檔案預覽</h3>
-        <a id="modalOpenFile" href="#" target="_blank" rel="noopener" class="course-modal-open-file">另開檔案</a>
+        <div class="course-modal-actions">
+          <a id="modalOpenFile" href="#" target="_blank" rel="noopener" class="course-modal-open-file">另開檔案</a>
+          <button class="course-modal-close" onclick="window.closeCourseModal()" aria-label="關閉視窗">&times;</button>
+        </div>
       </div>
       <div class="course-modal-body">
-        <img id="modalImg" src="" alt="檔案預覽" />
-        <iframe id="modalPdf" title="PDF 檔案預覽" src="" hidden></iframe>
+        <img id="modalImg" src="" alt="檔案預覽" hidden style="display: none;" />
+        <iframe id="modalPdf" title="PDF 檔案預覽" src="" hidden style="display: none;"></iframe>
       </div>
     </div>
   </div>
