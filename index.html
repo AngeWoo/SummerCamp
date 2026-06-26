@@ -13,7 +13,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=20260605-file-preview" />
+  <link rel="stylesheet" href="./styles.css?v=20260626-north-notice-buttons" />
   <script>
     /* 共用檔案預覽視窗：支援圖片與 PDF */
     window.showFilePreview = function(fileUrl, title) {
@@ -429,6 +429,14 @@
                 <div class="roster-buttons" style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 10px; width: 100%;">
                   <button type="button" onclick="window.showFilePreview('./images/北1.jpg', '北區學員名單')" class="button button-roster">學員名單</button>
                   <button type="button" onclick="window.showFilePreview('./images/北2.pdf', '北區奉侍名單')" class="button button-roster">奉侍名單</button>
+                </div>
+                <div class="notice-buttons notice-buttons-card" aria-label="北區佛學夏令營須知">
+                  <button type="button"
+                    onclick="window.showFilePreview('./images/2026佛夏 家長須知_網站用.pdf', '2026佛夏 家長須知')"
+                    class="button button-notice">家長須知</button>
+                  <button type="button"
+                    onclick="window.showFilePreview('./images/2026佛夏 輔導員須知_網站用.pdf', '2026佛夏 輔導員須知')"
+                    class="button button-notice">輔導員須知</button>
                 </div>
               </div>
             </div>
