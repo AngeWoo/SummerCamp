@@ -13,7 +13,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=20260626-north-notice-buttons" />
+  <link rel="stylesheet" href="./styles.css?v=20260626-north-notice-buttons-fix" />
   <script>
     /* 共用檔案預覽視窗：支援圖片與 PDF */
     window.showFilePreview = function(fileUrl, title) {
@@ -808,6 +808,23 @@
     .roster-buttons .button-roster {
       flex: 1 1 0 !important;
       width: auto !important;
+      min-width: 0 !important;
+      min-height: 52px !important;
+      padding: 0 10px !important;
+      white-space: nowrap !important;
+    }
+
+    .notice-buttons-card {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      width: 100% !important;
+      margin: 0 !important;
+    }
+
+    .notice-buttons-card .button-notice {
+      box-sizing: border-box !important;
+      width: 100% !important;
       min-width: 0 !important;
       min-height: 52px !important;
       padding: 0 10px !important;

@@ -1479,6 +1479,12 @@ h3 {
   gap: 10px;
 }
 
+.notice-buttons-card .button-notice {
+  box-sizing: border-box;
+  min-width: 0;
+  padding-inline: 12px;
+}
+
 .roster-buttons {
   display: flex !important;
   flex-flow: row nowrap !important;
